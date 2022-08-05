@@ -1,240 +1,201 @@
 #!/bin/bash
 
-# Input Project Data section
-project_path="D:\Workspace\microservices\payment"
-project_name=""
-namespace="tan"
-#project_path="/media/tan/PortableDrive/Workspace/microservices/payment"
-root_path=$( pwd )
-logo=true
-# if [ -z $1 ]; then
-# 	read -p "Enter Project path: " project_path
-# else
-# 	project_path=$1
-# fi
+root_path=$(pwd)
 
 # Scripts
-liquibase_script="$root_path/helper-scripts/liquibase.sh"
-dockube_script="$root_path/helper-scripts/dockube.sh"
+scripts_path="$root_path/src"
 
-GREEN=$'\e[0;32m'
-RED=$'\e[0;31m'
-BRED=$'\e[1;31m'
-NC=$'\e[0m'
-# Reset
-Color_Off='\033[0m'       # Text Reset
+beautify_script="$scripts_path/beautify.sh"
+dockube_script="$scripts_path/dockube.sh"
+git_script="$scripts_path/git_script.sh"
+liquibase_script="$scripts_path/liquibase.sh"
+maven_script="$scripts_path/maven_script.sh"
+os_script="${scripts_path}/os_script.sh"
+util_script="$scripts_path/util_script.sh"
+vars_script="${scripts_path}/vars.sh"
 
-# Regular Colors
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
+# Load scripts
+. "${beautify_script}"
+. "${dockube_script}"
+. "${git_script}"
+. "${liquibase_script}"
+. "${maven_script}"
+. "${os_script}"
+. "${util_script}"
+. "${vars_script}"
 
-# Bold
-BBlack='\033[1;30m'       # Black
-BRed='\033[1;31m'         # Red
-BGreen='\033[1;32m'       # Green
-BYellow='\033[1;33m'      # Yellow
-BBlue='\033[1;34m'        # Blue
-BPurple='\033[1;35m'      # Purple
-BCyan='\033[1;36m'        # Cyan
-BWhite='\033[1;37m'       # White
-
-# Underline
-UBlack='\033[4;30m'       # Black
-URed='\033[4;31m'         # Red
-UGreen='\033[4;32m'       # Green
-UYellow='\033[4;33m'      # Yellow
-UBlue='\033[4;34m'        # Blue
-UPurple='\033[4;35m'      # Purple
-UCyan='\033[4;36m'        # Cyan
-UWhite='\033[4;37m'       # White
-
-# Background
-On_Black='\033[40m'       # Black
-On_Red='\033[41m'         # Red
-On_Green='\033[42m'       # Green
-On_Yellow='\033[43m'      # Yellow
-On_Blue='\033[44m'        # Blue
-On_Purple='\033[45m'      # Purple
-On_Cyan='\033[46m'        # Cyan
-On_White='\033[47m'       # White
-
-# High Intensity
-IBlack='\033[0;90m'       # Black
-IRed='\033[0;91m'         # Red
-IGreen='\033[0;92m'       # Green
-IYellow='\033[0;93m'      # Yellow
-IBlue='\033[0;94m'        # Blue
-IPurple='\033[0;95m'      # Purple
-ICyan='\033[0;96m'        # Cyan
-IWhite='\033[0;97m'       # White
-
-# Bold High Intensity
-BIBlack='\033[1;90m'      # Black
-BIRed='\033[1;91m'        # Red
-BIGreen='\033[1;92m'      # Green
-BIYellow='\033[1;93m'     # Yellow
-BIBlue='\033[1;94m'       # Blue
-BIPurple='\033[1;95m'     # Purple
-BICyan='\033[1;96m'       # Cyan
-BIWhite='\033[1;97m'      # White
-
-# High Intensity backgrounds
-On_IBlack='\033[0;100m'   # Black
-On_IRed='\033[0;101m'     # Red
-On_IGreen='\033[0;102m'   # Green
-On_IYellow='\033[0;103m'  # Yellow
-On_IBlue='\033[0;104m'    # Blue
-On_IPurple='\033[0;105m'  # Purple
-On_ICyan='\033[0;106m'    # Cyan
-On_IWhite='\033[0;107m'   # White
-
-: '
-List of commands
-'
-
-commands=(
-	"mvn clean install" 
-	"mvn test" 
-	"mvn -PLIQUIBASE_PREPARE_FOR_DIFF test" 
-	"mvn liquibase:update liquibase:diff" 
-	"Replace Liquibase.yml properties" 
-	"mvn -PLIQUIBASE_VERIFY test"
-	"docker build"
-	"docker deploy"
-	"Kube Service Restart"
-	# "echo Hello World"
-	)
-
-: '
-Show Logo & Icon
-'
-logoViewer() {
-	echo -e "$Green"
-	cat "$root_path/ascii/logo.ascii" 
-	echo -e "$NC"
-	if [ $logo == true ]; then
-		echo -e "$Red"
-		cat "$root_path/ascii/robot.ascii"
-		echo -e "$NC"
-	fi
-}
-
-: '
-Toggle Icon
-'
-toggleIcon() {
-
-	if [ $logo == true ]; then
-		echo "Icon ${RED}Disabled${NC}"
-		logo=false;
-	else
-		echo "Icon ${GREEN}Enabled${NC}"
-		logo=true;
-	fi
-}
-
-: '
-Read a file line by line
-'
-readFile() {
-	while IFS= read -r line; do
-		echo $line
-	done < $1
-}
-
-: '
-Dummy decorator for "Press Enter"
-'
-enterToConinue(){
-	printf "\n"
-	read -n 1 -s -r -p $"Press ${RED}Enter (⏎)${NC} to continue..."
-	read -e -t2
-	printf "\033c"
-}
-
-: '
-Input for Project Path
-'
-readProjectPath() {
-	read -p "Enter project path: " project_path
-}
-
-: '
-Check if Maven Project
-'
-projectChecker() {
-	cd $project_path
-	pwd
-	project_name="${PWD##*/}"
-
-
-	pom_file_location="${project_path}/pom.xml"
-	if [ -f "$pom_file_location" ]; then
-		echo ""
-	else
-		echo "Invalid project path"
-		readProjectPath
-		return
-	fi
-	printf "\n"
-}
-
-
-: '
-Command Picker
-'
+################# View List of command options ################
 optionPicker() {
-	projectChecker
+  ############ Maven Commands ################
+  optionPrint "m1" "Maven Test:" "mvn test"
+  optionPrint "m2" "Maven Clean Install:" "mvn clean install" true
 
-	for i in ${!commands[@]}; do
-		echo "${RED}$((i+1)).${NC} Run \"${GREEN}${commands[$i]}${NC}\""
-	done
-	echo "${RED}x.${NC} Toggle LOGO"
-	echo "${RED}0.${NC} Autopilot Mode"
-	printf "\n"
-	echo "Press ${BRED}Ctrl+C${NC} to quite..."
-	printf "\n"
+  ############ Liquibase Commands #############
+  optionPrint "l1" "Liquibase:" "Prepare"
+  optionPrint "l2" "Liquibase:" "Verify" true
 
-	read -p "Enter an option: " option
-	printf "\n"
+  ############# Docker Commands #################
+  optionPrint "d1" "Docker" "Build"
+  optionPrint "d2" "Docker" "Push" true
+
+  ############# Kubernetes Commands #############
+  optionPrint "k1" "Kubernetes Service" "Upscale"
+  optionPrint "k2" "Kubernetes Service" "Downscale"
+  optionPrint "k3" "Kubernetes Service" "Restart"
+  optionPrint "k4" "Kubernetes Service" "Upscale all services"
+  optionPrint "k5" "Kubernetes Service" "Downscale all services"
+  optionPrint "k6" "Kubernetes Service" "Run Proxy" true
+
+  ############## Git ############################
+  optionPrint "g1" "Git Fetch:" "git fetch"
+  optionPrint "g2" "Git Add All:" "git add ."
+  optionPrint "g3" "Git Add src folder:" "git add src/"
+  optionPrint "g4" "Git status:" "git status"
+  optionPrint "g5" "Git commit:" "git commit -m \$feature: \$message"
+  optionPrint "g6" "Git commit amend:" "git commit --amend --no-edit"
+  optionPrint "g7" "Git push:" "git push"
+  optionPrint "g8" "Git push Force With Leash:" "git push --force-with-leash"
+  optionPrint "g9" "Git squash n commits": "git rebase -i Head~n"
+  optionPrint "g10" "Git Rebase:" "git rebase origin/develop" true
+
+  ############## Autopilot ######################
+  optionPrint "0" "Autopilot" "Mode" true
+
+  ############## Utility scripts ####################
+  optionPrint "u1" "Conversion" "Base64"
+  optionPrint "u2" "ping" "Utility"
+  optionPrint "c" "Custom command" "Run any command inside project path" true
+
+  ############ Settings Commands ################
+  optionPrint "x" "Toggle" "Banner"
+  optionPrint "s1" "Update" "Project Path." false "${PROJECT_PATH}"
+  optionPrint "s2" "Update" "Kubernetes Namespace." true "${NAMESPACE}"
+
+  ########### End of commands ###################
+  echo "Press ${BRED}Ctrl+C${NC} to quit..."
+  printf "\n"
 }
 
-: '
-Execution of commands
-'
+############## Pick Option and Execute ###############
 optionExecutor() {
-	opt=$1
-	opt=$((opt-1))
-	cmnd=${commands[$opt]}
+  read -r -p "Enter an option: ${BYELLOW}" opt
+  echo "${NC}"
+  # shellcheck disable=SC2034
+  TEMP_OPT=$opt # Used to highlight option later
 
-	output=""
-	# echo "${RED}Running command:${NC} \"${cmnd}\""
-	\
-	case $1 in 0) echo "Sorry to disappoint you! Still working on it!";;
-	5) $liquibase_script $project_path;;
-	7) $dockube_script $project_name $namespace "build";;
-	8) $dockube_script $project_name $namespace "push";;
-	9) $dockube_script $project_name $namespace "restart";;
-	x) toggleIcon;;
-	*) $cmnd;;
-	esac
+  ########### Clear Screen And Print Chosen option #####
+  printf "\033c"
+  echo "You picked option: ${BPURPLE} ${opt}${NC}. "
+
+  case $opt in '0') echo "Sorry to disappoint you! Still working on it!" ;;
+
+    ####### Maven Commands ################
+  'm1') mavenTest ;;
+  'm2') mavenCleanInstall ;;
+
+    ######## Liquibase Commands ############
+  'l1') prepareLiquibase "$PROJECT_PATH" ;;
+  'l2') validateLiquibase ;;
+
+    ######## Docker Commands ###############
+  'd1') dockerActions "build" "${NAMESPACE}" "${PROJECT_NAME}" ;;
+  'd2') dockerActions "push" "${NAMESPACE}" "${PROJECT_NAME}" ;;
+
+    ######## Kubernetes Commands ###########
+  'k1') kubeActions "up" "${NAMESPACE}" "${PROJECT_NAME}" ;;
+  'k2') kubeActions "down" "${NAMESPACE}""${PROJECT_NAME}" ;;
+  'k3') kubeActions "restart" "${NAMESPACE}" "${PROJECT_NAME}" ;;
+  'k4') kubeActions "upAll" "${NAMESPACE}" ;;
+  'k5') kubeActions "downAll" "${NAMESPACE}" ;;
+  'k6') kubeActions "proxy" "${NAMESPACE}" ;;
+
+    ############### Git Commands #############
+  'g1') gitFetch ;;
+  'g2') gitAddAll ;;
+  'g3') gitAddSrc ;;
+  'g4') gitStatus ;;
+  'g5') gitCommit ;;
+  'g6') gitCommitAmend ;;
+  'g7') gitPush ;;
+  'g8') gitPushForceWithLeash ;;
+  'g9') gitSquash ;;
+  'g10') gitRebase ;;
+
+    ################### Utility Commands ##############
+  'u1') base64Conversion ;;
+  'u2') pingUtility ;;
+  'c') runCustomCommand ;;
+
+    ####### Settings & Configs #############
+  'x') toggleBanner ;;
+  's1') projectPathSetup 1 ;;
+  's2') namespaceSetup 1 ;;
+
+    ####### Invalid option #############
+  *) echo "Invalid command... Try again" ;;
+  esac
 }
 
-: '
-Main functions
-'
-option=-1
-# while [ $option != 0 ]
-while [ true ]
-do
-	logoViewer
-	optionPicker
-	optionExecutor $option
-	enterToConinue
+########## Validate Maven Project #############
+projectChecker() {
+  pom_file_location="${1}/pom.xml"
+  if [ -f "$pom_file_location" ]; then
+    cd "${1}" || exit
+  else
+    echo "Invalid Maven Project path"
+    TEMP_VAL=""
+  fi
+}
+
+########## Read and Set Project Path #################
+projectPathSetup() {
+  TEMP_VAL=""
+  if [ "$1" -eq 0 ]; then
+    PROJECT_PATH="$(cat "${root_path}"/vars/project_path.txt)"
+    TEMP_VAL=$PROJECT_PATH
+  fi
+
+  while [ -z "$TEMP_VAL" ]; do
+    read -r -p "Enter project path (maven projects only): " TEMP_VAL
+    projectChecker "$TEMP_VAL"
+  done
+  PROJECT_PATH=$TEMP_VAL
+  cd "$PROJECT_PATH" || exit
+
+  echo "$PROJECT_PATH" >"${root_path}/vars/project_path.txt"
+  PROJECT_NAME="${PWD##*/}"
+}
+
+
+############# Read and Set Namespace ################
+namespaceSetup() {
+  TEMP_VAL=""
+  if [ "$1" -eq 0 ]; then
+    NAMESPACE="$(cat "${root_path}"/vars/namespace.txt)"
+    TEMP_VAL=$NAMESPACE
+  fi
+
+  while [ -z "$TEMP_VAL" ]; do
+    read -r -p "Enter namespace: " TEMP_VAL
+  done
+  NAMESPACE=$TEMP_VAL
+
+  echo "$NAMESPACE" >"${root_path}/vars/namespace.txt"
+}
+
+# Initial Setup
+setup() {
+  projectPathSetup 0
+  namespaceSetup 0
+}
+
+
+######## Main Function ##########
+
+setup
+while true; do
+  logoViewer        # lOGO & Banner Viewer
+  optionPicker      # Option Viewer
+  optionExecutor    # Option Picker And Command Execute
+  enterToContinue   # Enter to Continue Template
 done
