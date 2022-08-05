@@ -2,6 +2,9 @@
 
 # Input Project Data section
 project_path="D:\Workspace\microservices\payment"
+project_name=""
+namespace="tan"
+#project_path="/media/tan/PortableDrive/Workspace/microservices/payment"
 root_path=$( pwd )
 logo=true
 # if [ -z $1 ]; then
@@ -9,6 +12,10 @@ logo=true
 # else
 # 	project_path=$1
 # fi
+
+# Scripts
+liquibase_script="$root_path/helper-scripts/liquibase.sh"
+dockube_script="$root_path/helper-scripts/dockube.sh"
 
 GREEN=$'\e[0;32m'
 RED=$'\e[0;31m'
@@ -92,11 +99,15 @@ List of commands
 '
 
 commands=(
-	"mvn clean install" "mvn test" 
+	"mvn clean install" 
+	"mvn test" 
 	"mvn -PLIQUIBASE_PREPARE_FOR_DIFF test" 
 	"mvn liquibase:update liquibase:diff" 
 	"Replace Liquibase.yml properties" 
-	"mvn -PLIQUIBASE_VERIFY test" 
+	"mvn -PLIQUIBASE_VERIFY test"
+	"docker build"
+	"docker deploy"
+	"Kube Service Restart"
 	# "echo Hello World"
 	)
 
@@ -105,11 +116,11 @@ Show Logo & Icon
 '
 logoViewer() {
 	echo -e "$Green"
-	cat "$root_path\\ascii\\logo.ascii" 
+	cat "$root_path/ascii/logo.ascii" 
 	echo -e "$NC"
 	if [ $logo == true ]; then
 		echo -e "$Red"
-		cat "$root_path\\ascii\\robot.ascii"
+		cat "$root_path/ascii/robot.ascii"
 		echo -e "$NC"
 	fi
 }
@@ -143,6 +154,7 @@ Dummy decorator for "Press Enter"
 enterToConinue(){
 	printf "\n"
 	read -n 1 -s -r -p $"Press ${RED}Enter (⏎)${NC} to continue..."
+	read -e -t2
 	printf "\033c"
 }
 
@@ -159,6 +171,8 @@ Check if Maven Project
 projectChecker() {
 	cd $project_path
 	pwd
+	project_name="${PWD##*/}"
+
 
 	pom_file_location="${project_path}/pom.xml"
 	if [ -f "$pom_file_location" ]; then
@@ -191,7 +205,6 @@ optionPicker() {
 	printf "\n"
 }
 
-
 : '
 Execution of commands
 '
@@ -203,12 +216,14 @@ optionExecutor() {
 	output=""
 	# echo "${RED}Running command:${NC} \"${cmnd}\""
 	\
-	case $1 in 0) echo "Sorry to dissappoint you! Still working on it!";;
-	5) $root_path/helper-scripts/liquibase-script.sh $project_path;;
+	case $1 in 0) echo "Sorry to disappoint you! Still working on it!";;
+	5) $liquibase_script $project_path;;
+	7) $dockube_script $project_name $namespace "build";;
+	8) $dockube_script $project_name $namespace "push";;
+	9) $dockube_script $project_name $namespace "restart";;
 	x) toggleIcon;;
 	*) $cmnd;;
 	esac
-
 }
 
 : '
