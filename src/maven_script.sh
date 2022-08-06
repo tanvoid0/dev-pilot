@@ -2,10 +2,11 @@
 
 ############ Maven Test ##############################
 mavenTest() {
-  commandPrint "mvn test"
+  commandPrintAndSave "mvn test" "validate"
 }
 
 ################ Maven Clean Install #################
 mavenCleanInstall() {
-  commandPrint "mvn clean install"
+#  commandPrint "mvn clean install"
+  commandPrintAndSave "mvn clean install" "validate"
 }

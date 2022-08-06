@@ -25,7 +25,7 @@ vars_script="${scripts_path}/vars.sh"
 . "${vars_script}"
 
 ################# View List of command options ################
-optionPicker() {
+optionOutput() {
   ############ Maven Commands ################
   optionGroupTitlePrint "Maven Commands"
   optionPrint "m1" "Maven Test:" "mvn test"
@@ -89,18 +89,22 @@ optionPicker() {
   printf "\n"
 }
 
-############## Pick Option and Execute ###############
-optionExecutor() {
+############## Pick Option ###############
+optionInput() {
   read -r -p "Enter an option: ${BYELLOW}" opt
   echo "${NC}"
+  printf "\033c"
+}
+
+############## Option Process ##################
+optionProcess() {
   # shellcheck disable=SC2034
-  TEMP_OPT=$opt # Used to highlight option later
+  TEMP_OPT=$1 # Used to highlight option later
 
   ########### Clear Screen And Print Chosen option #####
-  printf "\033c"
-  echo "You picked option: ${BPURPLE} ${opt}${NC}. "
+  echo "You picked option: ${BPURPLE} ${TEMP_OPT}${NC}. "
 
-  case $opt in '0') echo "Sorry to disappoint you! Still working on it!" ;;
+  case $TEMP_OPT in '0') autoPilot ;;
 
     ####### Maven Commands ################
   'm1') mavenTest ;;
@@ -154,6 +158,42 @@ optionExecutor() {
   *) echo "Invalid command... Try again" ;;
   esac
 }
+
+############ Auto pilot ####################
+autoPilot() {
+  bannerPrinter "flight_take_off" "${GREEN}"
+  echo "Auto pilot mode ${RED}Deployed ✈ ${NC} ..."
+  sleep 3s
+
+  OUTPUT_RESPONSE=true
+  autoPilotFlyMode 'm1' false
+
+  bannerPrinter "jet_group"
+
+  autoPilotFlyMode 'm2'
+
+  if [ "$OUTPUT_RESPONSE" == true ]; then
+    bannerPrinter "plane" "${GREEN}"
+    echo "${GREEN}Flight landed safely ✈...${NC} Your Process was successful... Enjoy ... "
+  else
+    bannerPrinter "jet_crash" "${RED}"
+    echo "${RED}Your flight crashed 🔥 ...${NC} it failed in option ${TEMP_OPT}.. Go back to the main menu, fix things and continue manually 🛠️🛠️🛠️. Or you can always do a fresh start ⛸️... "
+  fi
+}
+
+############# Move next feature ##########
+# @param1 option
+# @param2 validation required
+autoPilotFlyMode() {
+  if [ "$2" == false ]; then
+    OUTPUT_RESPONSE=true
+  fi
+
+  if [ "$OUTPUT_RESPONSE" == true ]; then
+    optionProcess "$1"
+  fi
+}
+
 
 ########## Validate Maven Project #############
 projectChecker() {
@@ -214,7 +254,10 @@ setup() {
 setup
 while true; do
   logoViewer        # lOGO & Banner Viewer
-  optionPicker      # Option Viewer
-  optionExecutor    # Option Picker And Command Execute
+
+  optionOutput      # Option Viewer
+  optionInput       # Option Picker
+  optionProcess "$opt" # And Command Execute
+
   enterToContinue   # Enter to Continue Template
 done

@@ -8,3 +8,12 @@ readFile() {
 }
 
 
+readFileToVar() {
+  OUTPUT="$(cat "$1")"
+  echo "$OUTPUT"
+}
+
+readOutputFile() {
+  # shellcheck disable=SC2154
+  OUTPUT="$(readFileToVar "$OUTPUT_FILE")"
+}

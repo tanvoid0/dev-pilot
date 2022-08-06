@@ -22,6 +22,13 @@ logoViewer() {
 	fi
 }
 
+####### Show slayer ##############
+bannerPrinter() {
+  echo -e "$2"
+  cat "$root_path/ascii/$1.ascii"
+  echo -e "$NC"
+}
+
 
 ############### ToggleBanner ##################
 toggleBanner() {
@@ -79,4 +86,25 @@ commandPrint() {
   sleep 1.4s
   printf "\n"
   eval "$1"
+}
+
+commandPrintAndSave() {
+  commandPrint "$1" | tee "$OUTPUT_FILE"
+
+  if [ "$2" == "validate" ]; then
+    cmdOutputResponseValidator
+  fi
+}
+
+
+cmdOutputResponseValidator() {
+  OUTPUT="$(cat "$OUTPUT_FILE")"
+  printf "\n\n"
+
+  OUTPUT_TRIM="${OUTPUT: -1000}"
+  case "$OUTPUT_TRIM" in
+    *"BUILD SUCCESS"*) echo "${BGREEN}Operation completed Successfully${NC}..."; OUTPUT_RESPONSE=true ;;
+    *"BUILD FAILED"*) echo "${BRED}Operation failed${NC}..."; OUTPUT_RESPONSE=false ;;
+    *) echo "Not sure... $OUTPUT_TRIM"; OUTPUT_RESPONSE="";;
+  esac
 }

@@ -21,11 +21,14 @@ Currently, support limited to **spring boot** projects only.
 * ping
 * Custom Command
 * Cache data (Save Common data e.g., namespace)
-
-### Ongoing Feature Development
 * Kubernetes Port forwarding
-* Implementing RabbitMQ
+
+### On Test
 * Autopilot
+
+### Upcoming features
+* Implementing RabbitMQ deployment
+* Initialize Dummy database
 
 ## Commands (not fully updated)
 ## Maven Commands

@@ -3,6 +3,9 @@
 
 
 TEST_VAR="Hello World"
+OUTPUT_FILE="${root_path}/output.txt"   # Output saved to file
+OUTPUT_RESPONSE=""    # Output Response of a command
+TEMP_OPT="" # Option picked in main menu, used as automation bookmark
 #NAMESPACE="tan"
 #PROJECT_PATH="D:\Workspace\microservices\payment"
 #LOGO_VIEW=true
