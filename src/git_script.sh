@@ -45,9 +45,9 @@ gitPush() {
   commandPrint "git push"
 }
 
-###################### Git push Force with leash ############
-gitPushForceWithLeash() {
-  commandPrint "git push --force-with-leash"
+###################### Git push Force with lease ############
+gitPushForceWithLease() {
+  commandPrint "git push --force-with-lease"
 }
 
 ################## Git Squash ########################

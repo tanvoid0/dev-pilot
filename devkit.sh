@@ -54,7 +54,7 @@ optionPicker() {
   optionPrint "g5" "Git commit:" "git commit -m \$feature: \$message"
   optionPrint "g6" "Git commit amend:" "git commit --amend --no-edit"
   optionPrint "g7" "Git push:" "git push"
-  optionPrint "g8" "Git push Force With Leash:" "git push --force-with-leash"
+  optionPrint "g8" "Git push Force With Lease:" "git push --force-with-lease"
   optionPrint "g9" "Git squash n commits": "git rebase -i Head~n"
   optionPrint "g10" "Git Rebase:" "git rebase origin/develop" true
 
@@ -117,7 +117,7 @@ optionExecutor() {
   'g5') gitCommit ;;
   'g6') gitCommitAmend ;;
   'g7') gitPush ;;
-  'g8') gitPushForceWithLeash ;;
+  'g8') gitPushForceWithLease ;;
   'g9') gitSquash ;;
   'g10') gitRebase ;;
 
