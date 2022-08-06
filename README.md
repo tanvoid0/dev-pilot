@@ -23,6 +23,8 @@ Currently, support limited to **spring boot** projects only.
 * Cache data (Save Common data e.g., namespace)
 
 ### Ongoing Feature Development
+* Kubernetes Port forwarding
+* Implementing RabbitMQ
 * Autopilot
 
 ## Commands (not fully updated)

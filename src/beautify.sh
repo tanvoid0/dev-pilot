@@ -54,10 +54,15 @@ highlightOption(){
   fi
 }
 
+######### Beautify Option Group title #################
+optionGroupTitlePrint() {
+  echo "${PURPLE} $1 ${NC}"
+}
+
 ########## Beautify and Print Option #########
 optionPrint() {
   highlightOption "$1"
-  printf "%s%3s.%s %s %s%s%s " "${OPT_COLOR}" "${1}" "${NC}" "${2}" "${BGREEN}" "${3}" "${NC}"
+  printf "%s%4s.%s %s %s%s%s " "${OPT_COLOR}" "${1}" "${NC}" "${2}" "${BGREEN}" "${3}" "${NC}"
   if [[ -n "$5" ]]; then
      echo -n "Current: ${BYELLOW}${5}${NC}"
   fi

@@ -6,7 +6,7 @@ root_path=$(pwd)
 scripts_path="$root_path/src"
 
 beautify_script="$scripts_path/beautify.sh"
-dockube_script="$scripts_path/dockube.sh"
+distributed_service_script="$scripts_path/distributed_service_script.sh"
 git_script="$scripts_path/git_script.sh"
 liquibase_script="$scripts_path/liquibase.sh"
 maven_script="$scripts_path/maven_script.sh"
@@ -16,7 +16,7 @@ vars_script="${scripts_path}/vars.sh"
 
 # Load scripts
 . "${beautify_script}"
-. "${dockube_script}"
+. "${distributed_service_script}"
 . "${git_script}"
 . "${liquibase_script}"
 . "${maven_script}"
@@ -27,26 +27,38 @@ vars_script="${scripts_path}/vars.sh"
 ################# View List of command options ################
 optionPicker() {
   ############ Maven Commands ################
+  optionGroupTitlePrint "Maven Commands"
   optionPrint "m1" "Maven Test:" "mvn test"
   optionPrint "m2" "Maven Clean Install:" "mvn clean install" true
 
   ############ Liquibase Commands #############
+  optionGroupTitlePrint "Liquibase Actions"
   optionPrint "l1" "Liquibase:" "Prepare"
   optionPrint "l2" "Liquibase:" "Verify" true
 
   ############# Docker Commands #################
+  optionGroupTitlePrint "Docker Commands"
   optionPrint "d1" "Docker" "Build"
   optionPrint "d2" "Docker" "Push" true
 
   ############# Kubernetes Commands #############
+  optionGroupTitlePrint "Kubernetes Commands"
   optionPrint "k1" "Kubernetes Service" "Upscale"
   optionPrint "k2" "Kubernetes Service" "Downscale"
   optionPrint "k3" "Kubernetes Service" "Restart"
   optionPrint "k4" "Kubernetes Service" "Upscale all services"
   optionPrint "k5" "Kubernetes Service" "Downscale all services"
-  optionPrint "k6" "Kubernetes Service" "Run Proxy" true
+  optionPrint "k6" "Kubernetes Service" "Run Proxy"
+  optionPrint "k7" "Kubernetes Service" "Port Forward"
+  optionPrint "k8" "Kubernetes Service" "Debug Port Forward" true
 
   ############## Git ############################
+  optionGroupTitlePrint "Gcloud Commands"
+  optionPrint "gc1"  "Gcloud login" "gcloud auth login"
+  optionPrint "gc2" "Gcloud init" "gcloud init" true
+
+  ############## Git ############################
+  optionGroupTitlePrint "Git Commands"
   optionPrint "g1" "Git Fetch:" "git fetch"
   optionPrint "g2" "Git Add All:" "git add ."
   optionPrint "g3" "Git Add src folder:" "git add src/"
@@ -58,15 +70,16 @@ optionPicker() {
   optionPrint "g9" "Git squash n commits": "git rebase -i Head~n"
   optionPrint "g10" "Git Rebase:" "git rebase origin/develop" true
 
-  ############## Autopilot ######################
-  optionPrint "0" "Autopilot" "Mode" true
-
   ############## Utility scripts ####################
+  optionGroupTitlePrint "Utilities"
   optionPrint "u1" "Conversion" "Base64"
   optionPrint "u2" "ping" "Utility"
   optionPrint "c" "Custom command" "Run any command inside project path" true
+  ############## Autopilot ######################
+  optionPrint "0" "Autopilot" "Mode" true
 
   ############ Settings Commands ################
+  optionGroupTitlePrint "Configs"
   optionPrint "x" "Toggle" "Banner"
   optionPrint "s1" "Update" "Project Path." false "${PROJECT_PATH}"
   optionPrint "s2" "Update" "Kubernetes Namespace." true "${NAMESPACE}"
@@ -108,6 +121,12 @@ optionExecutor() {
   'k4') kubeActions "upAll" "${NAMESPACE}" ;;
   'k5') kubeActions "downAll" "${NAMESPACE}" ;;
   'k6') kubeActions "proxy" "${NAMESPACE}" ;;
+  'k7') kubePortForward ;;
+  'k8') kubePortForward "debug";;
+
+    ###### Gcloud commands ####################
+  'gc1') gcloudLogin ;;
+  'gc2') gcloudInit ;;
 
     ############### Git Commands #############
   'g1') gitFetch ;;

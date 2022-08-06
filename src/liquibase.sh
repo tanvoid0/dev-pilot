@@ -47,6 +47,13 @@ new=(
 	"boolean.false"
 	)
 
+## TODO: Generate Database for initial database creation #####
+# param1: namespace
+# param2: service-name
+generateLocalDatabaseQuery() {
+  echo "create database \"$2-$1\" template template0 encoding UTF8 lc_collate 'en_GB.UTF-8' lc_ctype 'en_GB.UTF-8';"
+}
+
 
 ## Common vars to use across functions
 db_changelog_path=""
