@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 ########### Show Logo & Banner ###############
 logoViewer() {
   ## Title Icon ######################
@@ -108,6 +107,7 @@ commandPrint() {
 }
 
 commandPrintAndSave() {
+  notifySend "Command Running" "$1"
   commandPrint "$1" | tee "$OUTPUT_FILE"
 
   if [ "$2" == "validate" ]; then
@@ -122,8 +122,8 @@ cmdOutputResponseValidator() {
 
   OUTPUT_TRIM="${OUTPUT: -1000}"
   case "$OUTPUT_TRIM" in
-    *"BUILD SUCCESS"*) bannerPrinter "jet_group" "${GREEN}" ; echo "${BGREEN}Operation completed Successfully${NC}..."; OUTPUT_RESPONSE=true ;;
-    *"BUILD FAILED"*) bannerPrint "plane_crash" "${RED}" ; echo "${BRED}Operation failed${NC}..."; OUTPUT_RESPONSE=false ;;
+    *"BUILD SUCCESS"*) bannerPrinter "jet_group" "${GREEN}" ; echo "${BGREEN}Operation completed Successfully${NC}..."; OUTPUT_RESPONSE=true; notifySend "Success" "Command finished successfully" ;;
+    *"BUILD FAILED"*) bannerPrint "plane_crash" "${RED}" ; echo "${BRED}Operation failed${NC}..."; OUTPUT_RESPONSE=false; notifySend "Failure" "Command failed." error ;;
     *) echo "Not sure... $OUTPUT_TRIM"; OUTPUT_RESPONSE="";;
   esac
 }

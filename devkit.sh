@@ -10,6 +10,7 @@ distributed_service_script="$scripts_path/distributed_service_script.sh"
 git_script="$scripts_path/git_script.sh"
 liquibase_script="$scripts_path/liquibase.sh"
 maven_script="$scripts_path/maven_script.sh"
+notify_script="$scripts_path/notify.sh"
 os_script="${scripts_path}/os_script.sh"
 util_script="$scripts_path/util_script.sh"
 vars_script="${scripts_path}/vars.sh"
@@ -20,6 +21,7 @@ vars_script="${scripts_path}/vars.sh"
 . "${git_script}"
 . "${liquibase_script}"
 . "${maven_script}"
+. "${notify_script}"
 . "${os_script}"
 . "${util_script}"
 . "${vars_script}"
@@ -177,7 +179,8 @@ autoPilot() {
   else
     bannerPrinter "jet_crash" "${RED}"
     echo "${RED}Your flight crashed ...${NC} it failed in option ${RED}${TEMP_OPT}${NC}.."
-    echo "Go back to the main menu, fix things and continue manually 🛠️🛠️🛠️. Or you can always do a fresh start ⛸️..."
+    echo "Go back to the main menu, fix things and continue manually."
+    echo "Or you can always do a ${GREEN}fresh start ⛸${NC}️..."
   fi
 }
 
