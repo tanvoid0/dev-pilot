@@ -103,7 +103,6 @@ optionPrint() {
 ############ Beautify and print Command #########
 commandPrint() {
   echo "Running command: ${BYELLOW}$1${NC}"
-  sleep 1.4s
   printf "\n"
   eval "$1"
 }
@@ -113,19 +112,27 @@ commandPrintAndSave() {
   commandPrint "$1" | tee "$OUTPUT_FILE"
 
   if [ "$2" == "validate" ]; then
-    cmdOutputResponseValidator
+    cmdOutputResponseValidator "$3" "$4"
   fi
 }
 
 
 cmdOutputResponseValidator() {
   OUTPUT="$(cat "$OUTPUT_FILE")"
-  printf "\n\n"
+  SUCCESS_STRING="$1"
+  FAILED_STRING="$2"
+  if [ -z "$SUCCESS_STRING" ]; then
+    SUCCESS_STRING="BUILD SUCCESS"
+  fi
 
-  OUTPUT_TRIM="${OUTPUT: -1000}"
+  if [ -z "$FAILED_STRING" ]; then
+    FAILED_STRING="BUILD FAILED"
+  fi
+
+  OUTPUT_TRIM="${OUTPUT: -1500}"
   case "$OUTPUT_TRIM" in
-    *"BUILD SUCCESS"*) bannerPrinter "jet_group" "${GREEN}" ; echo "${BGREEN}Operation completed Successfully${NC}..."; OUTPUT_RESPONSE=true; notifySend "Success" "Command finished successfully" ;;
-    *"BUILD FAILED"*) bannerPrint "plane_crash" "${RED}" ; echo "${BRED}Operation failed${NC}..."; OUTPUT_RESPONSE=false; notifySend "Failure" "Command failed." error ;;
+    *"$SUCCESS_STRING"*) bannerPrinter "jet_group" "${GREEN}" ; echo "${BGREEN}Operation completed Successfully${NC}..."; OUTPUT_RESPONSE=true; notifySend "Success" "Command finished successfully" ;;
+    *"$FAILED_STRING"*) bannerPrint "plane_crash" "${RED}" ; echo "${BRED}Operation failed${NC}..."; OUTPUT_RESPONSE=false; notifySend "Failure" "Command failed." error ;;
     *) echo "Not sure... $OUTPUT_TRIM"; OUTPUT_RESPONSE="";;
   esac
 }

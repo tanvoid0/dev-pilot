@@ -37,13 +37,16 @@ optionOutput() {
 
   ############ Liquibase Commands #############
   optionGroupTitlePrint "Liquibase Actions"
-  optionPrint "l1" "Liquibase:" "Prepare"
-  optionPrint "l2" "Liquibase:" "Verify" true
+  optionPrint "l1" "Liquibase test:" "mvn -PLIQUIBASE_PREPARE_FOR_DIFF test"
+  optionPrint "l2" "Liquibase update:" "mvn liquibase:update liquibase:diff"
+  optionPrint "l3" "Liquibase process:" "liquibase-changelog-master.yml"
+  optionPrint "l4" "Liquibase verify:" "mvn -PLIQUIBASE_VERIFY test" true
 
   ############# Docker Commands #################
   optionGroupTitlePrint "Docker Commands"
-  optionPrint "d1" "Docker" "Build"
-  optionPrint "d2" "Docker" "Push" true
+  optionPrint "d1" "Docker" "Check Daemon Running"
+  optionPrint "d2" "Docker" "Build"
+  optionPrint "d3" "Docker" "Push" true
 
   ############# Kubernetes Commands #############
   optionGroupTitlePrint "Kubernetes Commands"
@@ -116,12 +119,15 @@ optionProcess() {
   'm2') mavenCleanInstall ;;
 
     ######## Liquibase Commands ############
-  'l1') prepareLiquibase "$PROJECT_PATH" ;;
-  'l2') validateLiquibase ;;
+  'l1') prepareLiquibaseForInitialTest ;;
+  'l2') prepareLiquibaseForDiff ;;
+  'l3') processLiquibase ;;
+  'l4') validateLiquibase ;;
 
     ######## Docker Commands ###############
-  'd1') dockerActions "build" "${NAMESPACE}" "${PROJECT_NAME}" ;;
-  'd2') dockerActions "push" "${NAMESPACE}" "${PROJECT_NAME}" ;;
+  'd1') dockerRunningValidator ;;
+  'd2') dockerActions "build" "${NAMESPACE}" "${PROJECT_NAME}" ;;
+  'd3') dockerActions "push" "${NAMESPACE}" "${PROJECT_NAME}" ;;
 
     ######## Kubernetes Commands ###########
   'k1') kubeActions "up" "${NAMESPACE}" "${PROJECT_NAME}" ;;
@@ -165,15 +171,23 @@ optionProcess() {
   esac
 }
 
+prepForAutoPilot() {
+  autoPilotLiquibasePrep
+}
+
 ############ Auto pilot ####################
 autoPilot() {
   bannerPrinter "flight_take_off" "${GREEN}"
   echo "Auto pilot mode ${RED}Deployed ✈ ${NC} ..."
   sleep 3s
 
+  prepForAutoPilot
+
   OUTPUT_RESPONSE=true
-  autoPilotFlyMode 'm1' false
-  autoPilotFlyMode 'm2'
+  autoPilotMaven
+  autoPilotLiquibase
+  autoPilotDocker
+  autoPilotKubernetes
 
   if [ "$OUTPUT_RESPONSE" == true ]; then
     bannerPrinter "plane" "${GREEN}"
@@ -250,17 +264,26 @@ setup() {
   createVars
   projectPathSetup 0
   namespaceSetup 0
+  initLiquibasePaths
+}
+
+resetVars() {
+  liquibaseScriptReset
 }
 
 ######## Main Function ##########
 
 setup
 while true; do
+  ## Initiation
+  resetVars
   logoViewer # lOGO & Banner Viewer
 
-  optionOutput         # Option Viewer
-  optionInput          # Option Picker
-  optionProcess "$opt" # And Command Execute
+  ## Process
+  optionOutput                    # Option Viewer
+  optionInput                     # Option Picker
+  optionProcess "$opt"            # And Command Execute
 
-  enterToContinue # Enter to Continue Template
+  ## End Process
+  enterToContinue                 # Enter to Continue Template
 done

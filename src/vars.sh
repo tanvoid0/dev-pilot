@@ -13,6 +13,9 @@ VAR_FILE_PATH="${root_path}/vars"
 #PROJECT_PATH="D:\Workspace\microservices\payment"
 #LOGO_VIEW=true
 
+## Autopilot vars
+PILOT_LIQUIBASE_REQUIRED=false
+
 BLACK=$'\e[0;30m'
 BBLACK=$'\e[0;30m'
 RED=$'\e[0;31m'

@@ -1,0 +1,2 @@
+Running command: [1;33mdocker push eu.gcr.io/olm-rd/efm/payment:tan[0m
+

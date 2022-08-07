@@ -103,3 +103,5 @@ runCustomCommand() {
     commandPrint "$inputCmd"
   fi
 }
+
+############ Time based greetings

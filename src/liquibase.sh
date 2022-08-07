@@ -63,15 +63,15 @@ liquibase_new_filepath=""
 
 ################ Validate Liquibase Changelog #######################
 validateLiquibase() {
-  echo "Running command: ${GREEN}mvn -PLIQUIBASE_VERIFY test%s${NC}"
-  printf "\n\n"
-  sleep 2s
-  mvn -PLIQUIBASE_VERIFY test
-  sleep 5s
+  commandPrintAndSave "mvn -PLIQUIBASE_VERIFY test" "validate"
 }
 
 ################## Extension of `prepareLiquibase()` #################################
 processLiquibase() {
+  if [ -z "$liquibase_filename" ]; then
+    liquibaseSetFilename
+  fi
+
   ## Copy Generated Liquibase file to resources ###
   commandPrint "cp \"$liquibase_filepath\" \"$liquibase_new_filepath\""
 
@@ -87,31 +87,70 @@ processLiquibase() {
   printf "\n"
 
   printf "Your resources folder has been updated. Please revalidate the liquibase changes in %s...\n" "${liquibase_new_filepath}"
-  sleep 10s
+
+  if [ "$PILOT_LIQUIBASE_REQUIRED" == true ]; then
+    echo "Once you are happy with the liquibase changes, you can continue rest of the autopilot mode.."
+    notifySend "Action Required" "Liquibase File Generated..." important
+    enterToContinue
+  fi
 }
 
 ############## Prepare Liquibase Database ##################
 prepareLiquibase() {
+  prepareLiquibaseForInitialTest
+  prepareLiquibaseForDiff
+}
 
-  ################### New Liquibase Change File Name ###########
-  read -r -p "Enter new liquibase file title: " liquibase_filename
+prepareLiquibaseForDiff() {
+  commandPrintAndSave "mvn liquibase:update liquibase:diff" "validate"
+}
 
-  ############ Initialize filepath #################
-  # db_changelog_path - The database changelog directory path in the source directory of the project
-  # liquibase_filepath - generated file path of liquibase
-  # master_liquibase - The liquibase-changelog-master file path
-  # liquibase_new_filepath - The newly generated liquibase changes file path with new types
-  db_changelog_path="${1}/src/main/resources/db/changelog"
-  liquibase_filepath="${1}/target/liquibase-diff-changelog.yml"
-  master_liquibase="$db_changelog_path/liquibase-changelog-master.yml"
+prepareLiquibaseForInitialTest() {
+  commandPrintAndSave "mvn -PLIQUIBASE_PREPARE_FOR_DIFF test" "validate"
+}
+
+liquibaseScriptReset() {
+  liquibase_filename=""
+  liquibase_new_filepath=""
+  PILOT_LIQUIBASE_REQUIRED=false
+}
+
+################### New Liquibase Change File Name ###########
+# liquibase_new_filepath - The newly generated liquibase changes file path with new types
+liquibaseSetFilename() {
+  liquibase_filename=""
+  while [ -z "$liquibase_filename" ]; do
+      read -r -p "Enter new liquibase file title: " liquibase_filename
+  done
   liquibase_new_filepath="$db_changelog_path/$liquibase_filename.yml"
+}
 
-  commandPrint "mvn -PLIQUIBASE_PREPARE_FOR_DIFF test"
-  printf "\033c"
+############ Initialize filepath #################
+# db_changelog_path - The database changelog directory path in the source directory of the project
+# liquibase_filepath - generated file path of liquibase
+# master_liquibase - The liquibase-changelog-master file path
+initLiquibasePaths() {
+  db_changelog_path="$PROJECT_PATH/src/main/resources/db/changelog"
+  liquibase_filepath="$PROJECT_PATH/target/liquibase-diff-changelog.yml"
+  master_liquibase="$db_changelog_path/liquibase-changelog-master.yml"
+}
 
-  commandPrint "mvn liquibase:update liquibase:diff"
-  printf "\033c"
-  printf "\n\nLiquibase file tested and generated successfully. Processing your liquibase file and copying to resources..."
-  sleep 2s
-  processLiquibase
+autoPilotLiquibasePrep() {
+  read -r -p "Do you need liquibase for this flight? (y/n): " PILOT_LIQUIBASE_REQUIRED
+  if [ "$PILOT_LIQUIBASE_REQUIRED" == "y" ] || [ "$PILOT_LIQUIBASE_REQUIRED" == "Y" ]
+  then
+    PILOT_LIQUIBASE_REQUIRED=true
+    liquibaseSetFilename
+  else
+    PILOT_LIQUIBASE_REQUIRED=false
+  fi
+}
+
+autoPilotLiquibase() {
+  if [ "$PILOT_LIQUIBASE_REQUIRED" == true ]; then
+    autoPilotFlyMode 'l1'
+    autoPilotFlyMode 'l2'
+    autoPilotFlyMode 'l3'
+    autoPilotFlyMode 'l4'
+  fi
 }

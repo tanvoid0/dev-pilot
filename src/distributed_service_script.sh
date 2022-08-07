@@ -13,10 +13,10 @@
 dockerActions() {
   if [ "$1" == "build" ]; then
     echo "${GREEN}Building${NC} docker image for ${RED}project ${3}${NC}"
-    commandPrint "docker build --network=host --tag eu.gcr.io/olm-rd/efm/${3}:${2} ."
+    commandPrintAndSave "docker build --network=host --tag eu.gcr.io/olm-rd/efm/${3}:${2} ."
   elif [ "$1" == "push" ]; then
     echo "${GREEN}Pushing${NC} ${RED}${3}${NC} docker image to cloud..."
-    commandPrint "docker push eu.gcr.io/olm-rd/efm/${3}:${2}"
+    commandPrintAndSave "docker push eu.gcr.io/olm-rd/efm/${3}:${2}"
   fi
 }
 
@@ -128,4 +128,25 @@ gcloudLogin() {
 
 gcloudInit() {
   commandPrint "gcloud init"
+}
+
+dockerRunningValidator() {
+  commandPrintAndSave "docker version" # TODO: Fix docker not running message not being captured, thus unable to test"validate" "" "docker daemon is not running"
+}
+
+autoPilotDocker() {
+#  autoPilotFlyMode 'd1' true
+  autoPilotFlyMode 'd2' false # TODO: Create proper validation process for docker
+  autoPilotFlyMode 'd3' false # TODO: Create proper validation process for docker
+}
+
+autoPilotKubernetes() {
+  autoPilotFlyMode 'k3' false
+  sleep 2s
+  autoPilotFlyMode 'k6' false
+  sleep 2s
+  autoPilotFlyMode 'k7' false
+  sleep 2s
+  echo "Rest Client will be opened in a second"
+  openUrl "https://web.postman.co/home"
 }
