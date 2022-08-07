@@ -11,15 +11,34 @@ logoViewer() {
 
 	######## Banner #####################
   LOGO_VIEW="$(cat "${root_path}"/vars/logo.txt)"
+  loadBanner
+
   if [ -z "$LOGO_VIEW" ]; then
     toggleBanner
   fi
 
 	if [ "$LOGO_VIEW" == true ]; then
-		echo -e "$Red"
-		cat "$root_path/ascii/robot.ascii"
-		echo -e "$NC"
+	  bannerPrinter "$BANNER_FILE"
 	fi
+}
+
+############# Read and set banner ######################
+loadBanner() {
+  BANNER_FILE="$(cat "${root_path}"/vars/banner.txt)"
+  if [ -z "$BANNER_FILE" ]; then
+    bannerUpdate "cat/cat_moon"
+  fi
+}
+
+bannerUpdate() {
+  TEMP_VAL=$1
+  echo "This can be confusing. to keep it simple, enter the relative path. e.g., if a file is in ${RED}/ascii/file.ascii${NC} enter ${RED}file${NC}"
+  while [ -z "$TEMP_VAL" ]; do
+      read -r -p "Enter relative path: " TEMP_VAL
+  done
+  BANNER_FILE=$TEMP_VAL
+
+  echo "$BANNER_FILE" >"${root_path}/vars/banner.txt"
 }
 
 ####### Show slayer ##############
@@ -103,8 +122,8 @@ cmdOutputResponseValidator() {
 
   OUTPUT_TRIM="${OUTPUT: -1000}"
   case "$OUTPUT_TRIM" in
-    *"BUILD SUCCESS"*) echo "${BGREEN}Operation completed Successfully${NC}..."; OUTPUT_RESPONSE=true ;;
-    *"BUILD FAILED"*) echo "${BRED}Operation failed${NC}..."; OUTPUT_RESPONSE=false ;;
+    *"BUILD SUCCESS"*) bannerPrinter "jet_group" "${GREEN}" ; echo "${BGREEN}Operation completed Successfully${NC}..."; OUTPUT_RESPONSE=true ;;
+    *"BUILD FAILED"*) bannerPrint "plane_crash" "${RED}" ; echo "${BRED}Operation failed${NC}..."; OUTPUT_RESPONSE=false ;;
     *) echo "Not sure... $OUTPUT_TRIM"; OUTPUT_RESPONSE="";;
   esac
 }

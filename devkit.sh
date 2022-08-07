@@ -82,7 +82,8 @@ optionOutput() {
   optionGroupTitlePrint "Configs"
   optionPrint "x" "Toggle" "Banner"
   optionPrint "s1" "Update" "Project Path." false "${PROJECT_PATH}"
-  optionPrint "s2" "Update" "Kubernetes Namespace." true "${NAMESPACE}"
+  optionPrint "s2" "Update" "Kubernetes Namespace." false "${NAMESPACE}"
+  optionPrint "s3" "Update" "Banner Path." true "${BANNER_FILE}"
 
   ########### End of commands ###################
   echo "Press ${BRED}Ctrl+C${NC} to quit..."
@@ -153,6 +154,7 @@ optionProcess() {
   'x') toggleBanner ;;
   's1') projectPathSetup 1 ;;
   's2') namespaceSetup 1 ;;
+  's3') bannerUpdate ;;
 
     ####### Invalid option #############
   *) echo "Invalid command... Try again" ;;
@@ -167,9 +169,6 @@ autoPilot() {
 
   OUTPUT_RESPONSE=true
   autoPilotFlyMode 'm1' false
-
-  bannerPrinter "jet_group"
-
   autoPilotFlyMode 'm2'
 
   if [ "$OUTPUT_RESPONSE" == true ]; then
@@ -177,13 +176,14 @@ autoPilot() {
     echo "${GREEN}Flight landed safely ✈...${NC} Your Process was successful... Enjoy ... "
   else
     bannerPrinter "jet_crash" "${RED}"
-    echo "${RED}Your flight crashed 🔥 ...${NC} it failed in option ${TEMP_OPT}.. Go back to the main menu, fix things and continue manually 🛠️🛠️🛠️. Or you can always do a fresh start ⛸️... "
+    echo "${RED}Your flight crashed ...${NC} it failed in option ${RED}${TEMP_OPT}${NC}.."
+    echo "Go back to the main menu, fix things and continue manually 🛠️🛠️🛠️. Or you can always do a fresh start ⛸️..."
   fi
 }
 
 ############# Move next feature ##########
 # @param1 option
-# @param2 validation required
+# @param2 previous validation required
 autoPilotFlyMode() {
   if [ "$2" == false ]; then
     OUTPUT_RESPONSE=true
@@ -241,6 +241,7 @@ namespaceSetup() {
 
   echo "$NAMESPACE" >"${root_path}/vars/namespace.txt"
 }
+
 
 # Initial Setup
 setup() {
