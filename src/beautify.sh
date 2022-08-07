@@ -9,7 +9,7 @@ logoViewer() {
 
 
 	######## Banner #####################
-  LOGO_VIEW="$(cat "${root_path}"/vars/logo.txt)"
+  LOGO_VIEW="$(cat "${VAR_FILE_PATH}"/logo.txt)"
   loadBanner
 
   if [ -z "$LOGO_VIEW" ]; then
@@ -23,7 +23,7 @@ logoViewer() {
 
 ############# Read and set banner ######################
 loadBanner() {
-  BANNER_FILE="$(cat "${root_path}"/vars/banner.txt)"
+  BANNER_FILE="$(cat "${VAR_FILE_PATH}"/banner.txt)"
   if [ -z "$BANNER_FILE" ]; then
     bannerUpdate "cat/cat_moon"
   fi
@@ -37,7 +37,7 @@ bannerUpdate() {
   done
   BANNER_FILE=$TEMP_VAL
 
-  echo "$BANNER_FILE" >"${root_path}/vars/banner.txt"
+  echo "$BANNER_FILE" >"${VAR_FILE_PATH}/banner.txt"
 }
 
 ####### Show slayer ##############
@@ -57,7 +57,7 @@ toggleBanner() {
 		echo "Icon ${GREEN}Enabled${NC}"
 		LOGO_VIEW=true;
 	fi
-	echo "$LOGO_VIEW" > "${root_path}/vars/logo.txt"
+	echo "$LOGO_VIEW" > "${VAR_FILE_PATH}/logo.txt"
 }
 
 ######## Dummy decorator for "Press Enter" ########

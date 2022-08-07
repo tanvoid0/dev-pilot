@@ -7,6 +7,7 @@ scripts_path="$root_path/src"
 
 beautify_script="$scripts_path/beautify.sh"
 distributed_service_script="$scripts_path/distributed_service_script.sh"
+files_script="$scripts_path/files.sh"
 git_script="$scripts_path/git_script.sh"
 liquibase_script="$scripts_path/liquibase.sh"
 maven_script="$scripts_path/maven_script.sh"
@@ -18,6 +19,7 @@ vars_script="${scripts_path}/vars.sh"
 # Load scripts
 . "${beautify_script}"
 . "${distributed_service_script}"
+. "${files_script}"
 . "${git_script}"
 . "${liquibase_script}"
 . "${maven_script}"
@@ -56,7 +58,7 @@ optionOutput() {
 
   ############## Git ############################
   optionGroupTitlePrint "Gcloud Commands"
-  optionPrint "gc1"  "Gcloud login" "gcloud auth login"
+  optionPrint "gc1" "Gcloud login" "gcloud auth login"
   optionPrint "gc2" "Gcloud init" "gcloud init" true
 
   ############## Git ############################
@@ -129,7 +131,7 @@ optionProcess() {
   'k5') kubeActions "downAll" "${NAMESPACE}" ;;
   'k6') kubeActions "proxy" "${NAMESPACE}" ;;
   'k7') kubePortForward ;;
-  'k8') kubePortForward "debug";;
+  'k8') kubePortForward "debug" ;;
 
     ###### Gcloud commands ####################
   'gc1') gcloudLogin ;;
@@ -197,7 +199,6 @@ autoPilotFlyMode() {
   fi
 }
 
-
 ########## Validate Maven Project #############
 projectChecker() {
   pom_file_location="${1}/pom.xml"
@@ -213,7 +214,7 @@ projectChecker() {
 projectPathSetup() {
   TEMP_VAL=""
   if [ "$1" -eq 0 ]; then
-    PROJECT_PATH="$(cat "${root_path}"/vars/project_path.txt)"
+    PROJECT_PATH="$(cat "${VAR_FILE_PATH}"/project_path.txt)"
     TEMP_VAL=$PROJECT_PATH
   fi
 
@@ -224,16 +225,15 @@ projectPathSetup() {
   PROJECT_PATH=$TEMP_VAL
   cd "$PROJECT_PATH" || exit
 
-  echo "$PROJECT_PATH" >"${root_path}/vars/project_path.txt"
+  echo "$PROJECT_PATH" >"${VAR_FILE_PATH}/project_path.txt"
   PROJECT_NAME="${PWD##*/}"
 }
-
 
 ############# Read and Set Namespace ################
 namespaceSetup() {
   TEMP_VAL=""
   if [ "$1" -eq 0 ]; then
-    NAMESPACE="$(cat "${root_path}"/vars/namespace.txt)"
+    NAMESPACE="$(cat "${VAR_FILE_PATH}"/namespace.txt)"
     TEMP_VAL=$NAMESPACE
   fi
 
@@ -241,27 +241,26 @@ namespaceSetup() {
     read -r -p "Enter namespace: " TEMP_VAL
   done
   NAMESPACE=$TEMP_VAL
-
-  echo "$NAMESPACE" >"${root_path}/vars/namespace.txt"
+  export NAMESPACE="${NAMESPACE}"
+    echo "$NAMESPACE" >"${VAR_FILE_PATH}/namespace.txt"
 }
-
 
 # Initial Setup
 setup() {
+  createVars
   projectPathSetup 0
   namespaceSetup 0
 }
-
 
 ######## Main Function ##########
 
 setup
 while true; do
-  logoViewer        # lOGO & Banner Viewer
+  logoViewer # lOGO & Banner Viewer
 
-  optionOutput      # Option Viewer
-  optionInput       # Option Picker
+  optionOutput         # Option Viewer
+  optionInput          # Option Picker
   optionProcess "$opt" # And Command Execute
 
-  enterToContinue   # Enter to Continue Template
+  enterToContinue # Enter to Continue Template
 done
