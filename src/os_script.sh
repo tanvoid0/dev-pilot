@@ -12,7 +12,7 @@ initOSName() {
     cygwin*)  OS="WINDOWS" ;;
     *)        OS="$OSTYPE" ;;
   esac
-  echo "Operating System: $OS"
+  echo "Operating System:${BRED} {$OS} ${NC}"
 }
 
 openUrl() {

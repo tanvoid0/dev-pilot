@@ -104,4 +104,16 @@ runCustomCommand() {
   fi
 }
 
-############ Time based greetings
+############ Time based greetings based on Time of day ######
+utilScriptGreeting() {
+  TIME_OF_DAY=$(date +%H)
+  echo "$PURPLE"
+  if [ "$TIME_OF_DAY" -lt 12 ]; then
+    bannerPrinter "greet/coffee_morning"
+  elif [ "$TIME_OF_DAY" -lt 18 ]; then
+    bannerPrinter "greet/coffee_maker"
+  else
+    bannerPrinter "greet/computer_evening"
+  fi
+  echo "$NC"
+}

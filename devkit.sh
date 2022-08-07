@@ -17,6 +17,9 @@ util_script="$scripts_path/util_script.sh"
 vars_script="${scripts_path}/vars.sh"
 
 # Load scripts
+. "${vars_script}"
+
+
 . "${beautify_script}"
 . "${distributed_service_script}"
 . "${files_script}"
@@ -26,7 +29,6 @@ vars_script="${scripts_path}/vars.sh"
 . "${notify_script}"
 . "${os_script}"
 . "${util_script}"
-. "${vars_script}"
 
 ################# View List of command options ################
 optionOutput() {
@@ -274,6 +276,7 @@ resetVars() {
 ######## Main Function ##########
 
 setup
+utilScriptGreeting
 while true; do
   ## Initiation
   resetVars
