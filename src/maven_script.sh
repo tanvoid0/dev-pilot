@@ -11,7 +11,13 @@ mavenCleanInstall() {
   commandPrintAndSave "mvn clean install" "validate" "docker daemon is not running."
 }
 
-autoPilotMaven() {
+prepForAutoPilotMaven() {
+  autoPilotLiquibasePrep
+}
+
+autoPilotMavenSequence() {
+  prepForAutoPilotMaven
+
   autoPilotFlyMode 'm1'
   autoPilotFlyMode 'm2'
 }

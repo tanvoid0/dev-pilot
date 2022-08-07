@@ -5,12 +5,16 @@ root_path=$(pwd)
 # Scripts
 scripts_path="$root_path/src"
 
+### TODO: Loader function
+auto_pilot_script="$scripts_path/auto_pilot.sh"
 beautify_script="$scripts_path/beautify.sh"
 distributed_service_script="$scripts_path/distributed_service_script.sh"
 files_script="$scripts_path/files.sh"
 git_script="$scripts_path/git_script.sh"
 liquibase_script="$scripts_path/liquibase.sh"
+local_var_setup_script="$scripts_path/local_var_setup.sh"
 maven_script="$scripts_path/maven_script.sh"
+npm_script="$scripts_path/npm_script.sh"
 notify_script="$scripts_path/notify.sh"
 os_script="${scripts_path}/os_script.sh"
 util_script="$scripts_path/util_script.sh"
@@ -19,13 +23,15 @@ vars_script="${scripts_path}/vars.sh"
 # Load scripts
 . "${vars_script}"
 
-
+. "${auto_pilot_script}"
 . "${beautify_script}"
 . "${distributed_service_script}"
 . "${files_script}"
 . "${git_script}"
 . "${liquibase_script}"
+. "${local_var_setup_script}"
 . "${maven_script}"
+. "${npm_script}"
 . "${notify_script}"
 . "${os_script}"
 . "${util_script}"
@@ -33,9 +39,21 @@ vars_script="${scripts_path}/vars.sh"
 ################# View List of command options ################
 optionOutput() {
   ############ Maven Commands ################
-  optionGroupTitlePrint "Maven Commands"
-  optionPrint "m1" "Maven Test:" "mvn test"
-  optionPrint "m2" "Maven Clean Install:" "mvn clean install" true
+  if [ "$PROJECT_TYPE" == "maven" ]; then
+    optionGroupTitlePrint "Maven Commands"
+    optionPrint "m1" "Maven Test:" "mvn test"
+    optionPrint "m2" "Maven Clean Install:" "mvn clean install" true
+  elif [ "$PROJECT_TYPE" == "npm" ]; then
+    optionGroupTitlePrint "NPM Commands"
+    optionPrint "n1" "NPM Clean Install:" "npm ci"
+    optionPrint "n2" "NPM Start:" "npm run start"
+    optionPrint "n3" "NPM Test:" "npm run test"
+    optionPrint "n4" "NPM Test (Mocha):" "npm run test-mocha"
+    optionPrint "n5" "NPM Test (Pact):" "npm run test-pact"
+    optionPrint "n6" "NPM Test (Coverage):" "npm run test-coverage"
+    optionPrint "n7" "NPM Lint:" "npm run lint"
+    optionPrint "n8" "NPM Build:" "npm run build" true
+  fi
 
   ############ Liquibase Commands #############
   optionGroupTitlePrint "Liquibase Actions"
@@ -120,6 +138,16 @@ optionProcess() {
   'm1') mavenTest ;;
   'm2') mavenCleanInstall ;;
 
+    ############## NPM Commands ###############
+  'n1') npmScriptRunCI ;;
+  'n2') npmScriptRunStart ;;
+  'n3') npmScriptRunTest ;;
+  'n4') npmScriptRunTest "-mocha" ;;
+  'n5') npmScriptRunTest "-pact" ;;
+  'n6') npmScriptRunTest "-coverage" ;;
+  'n7') npmScriptRunLint ;;
+  'n8') npmScriptRunBuild ;;
+
     ######## Liquibase Commands ############
   'l1') prepareLiquibaseForInitialTest ;;
   'l2') prepareLiquibaseForDiff ;;
@@ -173,93 +201,6 @@ optionProcess() {
   esac
 }
 
-prepForAutoPilot() {
-  autoPilotLiquibasePrep
-}
-
-############ Auto pilot ####################
-autoPilot() {
-  bannerPrinter "flight_take_off" "${GREEN}"
-  echo "Auto pilot mode ${RED}Deployed ✈ ${NC} ..."
-  sleep 3s
-
-  prepForAutoPilot
-
-  OUTPUT_RESPONSE=true
-  autoPilotMaven
-  autoPilotLiquibase
-  autoPilotDocker
-  autoPilotKubernetes
-
-  if [ "$OUTPUT_RESPONSE" == true ]; then
-    bannerPrinter "plane" "${GREEN}"
-    echo "${GREEN}Flight landed safely ✈...${NC} Your Process was successful... Enjoy ... "
-  else
-    bannerPrinter "jet_crash" "${RED}"
-    echo "${RED}Your flight crashed ...${NC} it failed in option ${RED}${TEMP_OPT}${NC}.."
-    echo "Go back to the main menu, fix things and continue manually."
-    echo "Or you can always do a ${GREEN}fresh start ⛸${NC}️..."
-  fi
-}
-
-############# Move next feature ##########
-# @param1 option
-# @param2 previous validation required
-autoPilotFlyMode() {
-  if [ "$2" == false ]; then
-    OUTPUT_RESPONSE=true
-  fi
-
-  if [ "$OUTPUT_RESPONSE" == true ]; then
-    optionProcess "$1"
-  fi
-}
-
-########## Validate Maven Project #############
-projectChecker() {
-  pom_file_location="${1}/pom.xml"
-  if [ -f "$pom_file_location" ]; then
-    cd "${1}" || exit
-  else
-    echo "Invalid Maven Project path"
-    TEMP_VAL=""
-  fi
-}
-
-########## Read and Set Project Path #################
-projectPathSetup() {
-  TEMP_VAL=""
-  if [ "$1" -eq 0 ]; then
-    PROJECT_PATH="$(cat "${VAR_FILE_PATH}"/project_path.txt)"
-    TEMP_VAL=$PROJECT_PATH
-  fi
-
-  while [ -z "$TEMP_VAL" ]; do
-    read -r -p "Enter project path (maven projects only): " TEMP_VAL
-    projectChecker "$TEMP_VAL"
-  done
-  PROJECT_PATH=$TEMP_VAL
-  cd "$PROJECT_PATH" || exit
-
-  echo "$PROJECT_PATH" >"${VAR_FILE_PATH}/project_path.txt"
-  PROJECT_NAME="${PWD##*/}"
-}
-
-############# Read and Set Namespace ################
-namespaceSetup() {
-  TEMP_VAL=""
-  if [ "$1" -eq 0 ]; then
-    NAMESPACE="$(cat "${VAR_FILE_PATH}"/namespace.txt)"
-    TEMP_VAL=$NAMESPACE
-  fi
-
-  while [ -z "$TEMP_VAL" ]; do
-    read -r -p "Enter namespace: " TEMP_VAL
-  done
-  NAMESPACE=$TEMP_VAL
-  export NAMESPACE="${NAMESPACE}"
-    echo "$NAMESPACE" >"${VAR_FILE_PATH}/namespace.txt"
-}
 
 # Initial Setup
 setup() {
@@ -283,10 +224,10 @@ while true; do
   logoViewer # lOGO & Banner Viewer
 
   ## Process
-  optionOutput                    # Option Viewer
-  optionInput                     # Option Picker
-  optionProcess "$opt"            # And Command Execute
+  optionOutput         # Option Viewer
+  optionInput          # Option Picker
+  optionProcess "$opt" # And Command Execute
 
   ## End Process
-  enterToContinue                 # Enter to Continue Template
+  enterToContinue # Enter to Continue Template
 done

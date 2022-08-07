@@ -9,6 +9,7 @@ BANNER_FILE="${root_path}/ascii/cat/cat_moon.ascii" # Output path of banner
 TEMP_OPT="" # Option picked in main menu, used as automation bookmark
 ENV_FILE="${root_path}/.env"
 VAR_FILE_PATH="${root_path}/vars"
+PROJECT_TYPE=""
 #NAMESPACE="tan"
 #PROJECT_PATH="D:\Workspace\microservices\payment"
 #LOGO_VIEW=true

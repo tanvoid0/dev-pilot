@@ -1,2 +1,2 @@
-Running command: [1;33mdocker push eu.gcr.io/olm-rd/efm/payment:tan[0m
+Running command: [1;33mdocker build --network=host --tag eu.gcr.io/olm-rd/efm/payment:tan .[0m
 
