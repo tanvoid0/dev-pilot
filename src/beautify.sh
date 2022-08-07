@@ -31,7 +31,9 @@ loadBanner() {
 
 bannerUpdate() {
   TEMP_VAL=$1
-  echo "This can be confusing. to keep it simple, enter the relative path. e.g., if a file is in ${RED}/ascii/file.ascii${NC} enter ${RED}file${NC}"
+  if [ -n "$BANNER_FILE" ]; then
+    echo "This can be confusing. to keep it simple, enter the relative path. e.g., if a file is in ${RED}/ascii/file.ascii${NC} enter ${RED}file${NC}"
+  fi
   while [ -z "$TEMP_VAL" ]; do
       read -r -p "Enter relative path: " TEMP_VAL
   done
