@@ -11,4 +11,6 @@ if [ "$3" == "debug" ]; then
 fi
 npx kill-port HOST_PORT
 
-kubectl --n "${1}" port-forward svc/"${2}"-service "${HOST_PORT}":"${REMOTE_PORT}"
+kubectl -n "${1}" port-forward svc/"${2}"-service "${HOST_PORT}":"${REMOTE_PORT}"
+
+# kubectl -n tan port-forward svc/payment-service 7000:80

@@ -1,23 +1,24 @@
 #!/bin/bash
 ######## Common vars to use across files ########
 
-
+# Global Vars
 TEST_VAR="Hello World"
-OUTPUT_FILE="${root_path}/output.txt"   # Output saved to file
-OUTPUT_RESPONSE=""    # Output Response of a command
-BANNER_FILE="${root_path}/ascii/cat/cat_moon.ascii" # Output path of banner
-TEMP_OPT="" # Option picked in main menu, used as automation bookmark
-ENV_FILE="${root_path}/.env"
-VAR_FILE_PATH="${root_path}/vars"
-PROJECT_TYPE=""
-#NAMESPACE="tan"
-#PROJECT_PATH="D:\Workspace\microservices\payment"
-#LOGO_VIEW=true
+OUTPUT_FILE="${root_path}/output.txt"                     # Output saved to file
+OUTPUT_RESPONSE=""                                        # Output Response of a command
+BANNER_FILE="${root_path}/ascii/cat/cat_moon.ascii"       # Output path of banner
+TEMP_OPT=""                                               # Option picked in main menu, used as automation bookmark
+VAR_FILE_PATH="${root_path}/vars"                         # Cache variables
+PROJECT_TYPE=""                                           # Type of Project
+NAMESPACE=""                                              # Namespace
+PROJECT_PATH=""                                           # Project Path
+LOGO_VIEW=""                                              # Logo View Flag (boolean)
 
 ## Autopilot vars
-PILOT_LIQUIBASE_REQUIRED=false
+PILOT_LIQUIBASE_REQUIRED=""                               # defaults to false
+DOCKER_PRE_TAG="eu.gcr.io/olm-rd/efm"                     # Docker Pre tag
 
 
+# Colors
 BLACK=$'\e[0;30m'
 BBLACK=$'\e[0;30m'
 RED=$'\e[0;31m'

@@ -1,2 +1,1483 @@
-Running command: [1;33mdocker build --network=host --tag eu.gcr.io/olm-rd/efm/payment:tan .[0m
+Running command: [1;33mmvn clean install [0m
 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< com.olmgroup.msp.service:careaccount >----------------
+[INFO] Building careaccount 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ careaccount ---
+[INFO] Deleting E:\Workspace\ms\careaccount\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ careaccount ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 24 resources
+[INFO] 
+[INFO] --- quarkus-maven-plugin:2.11.2.Final:generate-code (default) @ careaccount ---
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ careaccount ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 158 source files to E:\Workspace\ms\careaccount\target\classes
+[INFO] 
+[INFO] --- quarkus-maven-plugin:2.11.2.Final:generate-code-tests (default) @ careaccount ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ careaccount ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 29 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ careaccount ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 36 source files to E:\Workspace\ms\careaccount\target\test-classes
+[INFO] /E:/Workspace/ms/careaccount/src/test/java/com/olmgroup/msp/service/careaccount/contracts/consumer/StateParametersBuilder.java: Some input files use unchecked or unsafe operations.
+[INFO] /E:/Workspace/ms/careaccount/src/test/java/com/olmgroup/msp/service/careaccount/contracts/consumer/StateParametersBuilder.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M5:test (default-test) @ careaccount ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.olmgroup.msp.service.careaccount.CareAccountApplicationTests
+2022-09-24 16:30:32,610 INFO  [org.jbo.threads] (main) JBoss Threads version 3.4.2.Final
+2022-09-24 16:30:32,653 WARN  [io.qua.res.mut.dep.ResteasyMutinyProcessor] (build-13) The quarkus-resteasy-mutiny extension is deprecated. Switch to RESTEasy Reactive instead.
+This extension adds support for Uni and Multi to RESTEasy 'classic', without using the reactive execution model, as RESTEasy classic does not use it. To properly integrate Mutiny and RESTEasy, use RESTEasy Reactive. See https://quarkus.io/guides/getting-started-reactive for detailed instructions
+2022-09-24 16:30:32,822 INFO  [io.qua.ely.sec.pro.dep.ElytronPropertiesProcessor] (build-37) Configuring from MPRealmConfig
+2022-09-24 16:30:33,098 WARN  [io.qua.arc.dep.SplitPackageProcessor] (build-22) Detected a split package usage which is considered a bad practice and should be avoided. Following packages were detected in multiple archives: 
+- "io.smallrye.reactive.messaging.providers.connectors" found in [io.smallrye.reactive:smallrye-reactive-messaging-in-memory::jar, io.smallrye.reactive:smallrye-reactive-messaging-provider::jar]
+2022-09-24 16:30:33,305 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-30) Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2022-09-24 16:30:35,303 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-30) Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2022-09-24 16:30:35,308 INFO  [org.tes.DockerClientFactory] (build-30) Docker host IP address is localhost
+2022-09-24 16:30:35,332 INFO  [org.tes.DockerClientFactory] (build-30) Connected to docker: 
+  Server Version: 20.10.17
+  API Version: 1.41
+  Operating System: Docker Desktop
+  Total Memory: 15955 MB
+2022-09-24 16:30:35,370 INFO  [org.tes.uti.ImageNameSubstitutor] (build-30) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2022-09-24 16:30:35,400 INFO  [doc.3.3]] (build-30) Creating container for image: testcontainers/ryuk:0.3.3
+2022-09-24 16:30:35,691 INFO  [org.tes.uti.RegistryAuthLocator] (build-30) Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2022-09-24 16:30:35,962 INFO  [doc.3.3]] (build-30) Container testcontainers/ryuk:0.3.3 is starting: de2a57e8c46be249e722122e3d91681c4fabbecc7afc26713539e3d77aa632de
+2022-09-24 16:30:36,399 INFO  [doc.3.3]] (build-30) Container testcontainers/ryuk:0.3.3 started in PT1.0196228S
+2022-09-24 16:30:36,406 INFO  [org.tes.uti.RyukResourceReaper] (build-30) Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2022-09-24 16:30:36,407 INFO  [org.tes.DockerClientFactory] (build-30) Checking the system...
+2022-09-24 16:30:36,409 INFO  [org.tes.DockerClientFactory] (build-30) ?? Docker server version should be at least 1.6.0
+2022-09-24 16:30:36,416 INFO  [doc.9-management]] (build-23) Creating container for image: rabbitmq:3.9-management
+2022-09-24 16:30:36,485 INFO  [doc.io/postgres:14]] (build-30) Creating container for image: docker.io/postgres:14
+2022-09-24 16:30:36,491 INFO  [doc.9-management]] (build-23) Container rabbitmq:3.9-management is starting: 52c1fff81966028cae6e39bc88ad56d2e2120fb0817446554aa720c0fa775733
+2022-09-24 16:30:36,604 INFO  [org.tes.uti.RegistryAuthLocator] (build-30) Credential helper/store (docker-credential-desktop) does not have credentials for docker.io
+2022-09-24 16:30:36,605 WARN  [doc.io/postgres:14]] (build-30) Reuse was requested but the environment does not support the reuse of containers
+To enable reuse of containers, you must set 'testcontainers.reuse.enable=true' in a file located at C:\Users\Tanveer\.testcontainers.properties
+2022-09-24 16:30:36,645 INFO  [doc.io/postgres:14]] (build-30) Container docker.io/postgres:14 is starting: 5645c8fddceb7367763ddd62be12cfcda460291d719e0ac1b7df0a9579a99a25
+2022-09-24 16:30:38,070 INFO  [doc.io/postgres:14]] (build-30) Container docker.io/postgres:14 started in PT1.6525638S
+2022-09-24 16:30:38,071 INFO  [io.qua.dev.pos.dep.PostgresqlDevServicesProcessor] (build-30) Dev Services for PostgreSQL started.
+2022-09-24 16:30:38,073 INFO  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-30) Dev Services for the default datasource (postgresql) started.
+2022-09-24 16:30:42,561 INFO  [doc.9-management]] (build-23) Container rabbitmq:3.9-management started in PT6.14552S
+2022-09-24 16:30:42,562 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-23) Dev Services for RabbitMQ started.
+2022-09-24 16:30:42,562 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-23) Other Quarkus applications in dev mode will find the broker automatically. For Quarkus applications in production mode, you can connect to this by starting your application with -Drabbitmq-host=localhost -Drabbitmq-port=54373 -Drabbitmq-username=guest -Drabbitmq-password=guest
+2022-09-24 16:30:45,278 WARN  [io.qua.ope.run.tra.LateBoundSampler] (vert.x-eventloop-thread-2) No Sampler delegate specified, no action taken.
+2022-09-24 16:30:45,664 INFO  [liq.database] (main) Set default schema name to public
+2022-09-24 16:30:46,167 INFO  [liq.lockservice] (main) Successfully acquired change log lock
+2022-09-24 16:30:46,184 INFO  [liq.changelog] (main) Creating database history table with name: public.databasechangelog
+Running Changeset: db/changelog/create-tables.yml::1658760710469-1::Alan.Boshier (generated)
+2022-09-24 16:30:46,246 INFO  [liq.changelog] (main) Table care_account created
+2022-09-24 16:30:46,247 INFO  [liq.changelog] (main) ChangeSet db/changelog/create-tables.yml::1658760710469-1::Alan.Boshier (generated) ran successfully in 6ms
+Running Changeset: db/changelog/create-tables.yml::1658760710469-2::Alan.Boshier (generated)
+2022-09-24 16:30:46,259 INFO  [liq.changelog] (main) Unique constraint added to care_account(care_account_identifier)
+2022-09-24 16:30:46,260 INFO  [liq.changelog] (main) ChangeSet db/changelog/create-tables.yml::1658760710469-2::Alan.Boshier (generated) ran successfully in 7ms
+Running Changeset: db/changelog/create-tables.yml::1658760710469-3::Alan.Boshier (generated)
+2022-09-24 16:30:46,264 INFO  [liq.changelog] (main) Unique constraint added to care_account(account_holder_system_id, account_holder_resource_id, account_holder_resource_type)
+2022-09-24 16:30:46,265 INFO  [liq.changelog] (main) ChangeSet db/changelog/create-tables.yml::1658760710469-3::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca32-previous-account-properties.yml::1659363910556-1::Alan.Boshier (generated)
+2022-09-24 16:30:46,271 INFO  [liq.changelog] (main) Columns previous_care_account_identifier(VARCHAR(255)) added to care_account
+2022-09-24 16:30:46,272 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca32-previous-account-properties.yml::1659363910556-1::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca32-previous-account-properties.yml::1659363910556-2::Alan.Boshier (generated)
+2022-09-24 16:30:46,277 INFO  [liq.changelog] (main) Columns previous_local_authority(VARCHAR(255)) added to care_account
+2022-09-24 16:30:46,278 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca32-previous-account-properties.yml::1659363910556-2::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca83-add-fundingtype.yml::1659448780459-1::Alan.Boshier (generated)
+2022-09-24 16:30:46,282 INFO  [liq.changelog] (main) Columns funding_type(VARCHAR(255)) added to care_account
+2022-09-24 16:30:46,283 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca83-add-fundingtype.yml::1659448780459-1::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca83-add-fundingtype.yml::1659448780459-2::Alan.Boshier
+2022-09-24 16:30:46,288 INFO  [liq.changelog] (main) Data updated in care_account
+2022-09-24 16:30:46,289 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca83-add-fundingtype.yml::1659448780459-2::Alan.Boshier ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca83-add-fundingtype.yml::1659448780459-3::Alan.Boshier
+2022-09-24 16:30:46,294 INFO  [liq.changelog] (main) NOT NULL constraint has been added to care_account.funding_type
+2022-09-24 16:30:46,294 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca83-add-fundingtype.yml::1659448780459-3::Alan.Boshier ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca83-add-fundingtypestartdate.yml::1659544273864-1::Alan.Boshier (generated)
+2022-09-24 16:30:46,299 INFO  [liq.changelog] (main) Columns funding_type_start_date(DATE) added to care_account
+2022-09-24 16:30:46,299 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca83-add-fundingtypestartdate.yml::1659544273864-1::Alan.Boshier (generated) ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca83-add-fundingtypestartdate.yml::1659544273864-2::Alan.Boshier
+2022-09-24 16:30:46,303 INFO  [liq.changelog] (main) Data updated in care_account
+2022-09-24 16:30:46,304 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca83-add-fundingtypestartdate.yml::1659544273864-2::Alan.Boshier ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca83-add-fundingtypestartdate.yml::1659544273864-3::Alan.Boshier
+2022-09-24 16:30:46,308 INFO  [liq.changelog] (main) NOT NULL constraint has been added to care_account.funding_type_start_date
+2022-09-24 16:30:46,309 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca83-add-fundingtypestartdate.yml::1659544273864-3::Alan.Boshier ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca53-add-personal-budget-properties.yml::1659631282775-1::Alan.Boshier (generated)
+2022-09-24 16:30:46,314 INFO  [liq.changelog] (main) Columns personal_budget_currency(VARCHAR(255)) added to care_account
+2022-09-24 16:30:46,315 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca53-add-personal-budget-properties.yml::1659631282775-1::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca53-add-personal-budget-properties.yml::1659631282775-2::Alan.Boshier (generated)
+2022-09-24 16:30:46,319 INFO  [liq.changelog] (main) Columns personal_budget_value(numeric(19, 2)) added to care_account
+2022-09-24 16:30:46,320 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca53-add-personal-budget-properties.yml::1659631282775-2::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca53-add-personal-budget-properties.yml::1659631282775-3::Alan.Boshier (generated)
+2022-09-24 16:30:46,324 INFO  [liq.changelog] (main) Columns personal_budget_start_date(DATE) added to care_account
+2022-09-24 16:30:46,324 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca53-add-personal-budget-properties.yml::1659631282775-3::Alan.Boshier (generated) ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-1::Alan.Boshier (generated)
+2022-09-24 16:30:46,328 INFO  [liq.changelog] (main) Columns closed_by_id(VARCHAR(255)) added to care_account
+2022-09-24 16:30:46,329 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-1::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-2::Alan.Boshier (generated)
+2022-09-24 16:30:46,334 INFO  [liq.changelog] (main) Columns closure_date(TIMESTAMPTZ) added to care_account
+2022-09-24 16:30:46,335 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-2::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-3::Alan.Boshier (generated)
+2022-09-24 16:30:46,338 INFO  [liq.changelog] (main) Columns closure_reason(VARCHAR(255)) added to care_account
+2022-09-24 16:30:46,339 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-3::Alan.Boshier (generated) ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-4::Alan.Boshier (generated)
+2022-09-24 16:30:46,343 INFO  [liq.changelog] (main) Columns status_start_date(DATE) added to care_account
+2022-09-24 16:30:46,344 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-4::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-5::Alan.Boshier
+2022-09-24 16:30:46,348 INFO  [liq.changelog] (main) Data updated in care_account
+2022-09-24 16:30:46,349 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-5::Alan.Boshier ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-6::Alan.Boshier
+2022-09-24 16:30:46,353 INFO  [liq.changelog] (main) NOT NULL constraint has been added to care_account.status_start_date
+2022-09-24 16:30:46,354 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca49-add-account-closure-properties.yml::1660045746685-6::Alan.Boshier ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-1::Alan.Boshier (generated)
+2022-09-24 16:30:46,359 INFO  [liq.changelog] (main) Table personal_budget_interval created
+2022-09-24 16:30:46,360 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-1::Alan.Boshier (generated) ran successfully in 4ms
+Running Changeset: db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-2::Alan.Boshier (generated)
+2022-09-24 16:30:46,366 INFO  [liq.changelog] (main) Foreign key constraint added to personal_budget_interval (care_account_fk)
+2022-09-24 16:30:46,367 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-2::Alan.Boshier (generated) ran successfully in 4ms
+Running Changeset: db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-3::Alan.Boshier (generated)
+2022-09-24 16:30:46,371 INFO  [liq.changelog] (main) Column care_account.personal_budget_currency dropped
+2022-09-24 16:30:46,371 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-3::Alan.Boshier (generated) ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-4::Alan.Boshier (generated)
+2022-09-24 16:30:46,375 INFO  [liq.changelog] (main) Column care_account.personal_budget_start_date dropped
+2022-09-24 16:30:46,375 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-4::Alan.Boshier (generated) ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-5::Alan.Boshier (generated)
+2022-09-24 16:30:46,379 INFO  [liq.changelog] (main) Column care_account.personal_budget_value dropped
+2022-09-24 16:30:46,380 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-personal-budget-timeline.yml::1661943798622-5::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca109-status-timeline.yml::1662047241256-2::Alan.Boshier (generated)
+2022-09-24 16:30:46,384 INFO  [liq.changelog] (main) Table care_account_status_interval created
+2022-09-24 16:30:46,385 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-status-timeline.yml::1662047241256-2::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca109-status-timeline.yml::1662047241256-3::Alan.Boshier (generated)
+2022-09-24 16:30:46,389 INFO  [liq.changelog] (main) Foreign key constraint added to care_account_status_interval (care_account_fk)
+2022-09-24 16:30:46,390 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-status-timeline.yml::1662047241256-3::Alan.Boshier (generated) ran successfully in 3ms
+Running Changeset: db/changelog/changesets/ca109-status-timeline.yml::1662047241256-3::Alan.Boshier
+2022-09-24 16:30:46,397 INFO  [liq.changelog] (main) Custom SQL executed
+2022-09-24 16:30:46,399 INFO  [liq.changelog] (main) Custom SQL executed
+2022-09-24 16:30:46,400 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-status-timeline.yml::1662047241256-3::Alan.Boshier ran successfully in 9ms
+Running Changeset: db/changelog/changesets/ca109-status-timeline.yml::1662047241256-4::Alan.Boshier (generated)
+2022-09-24 16:30:46,403 INFO  [liq.changelog] (main) Column care_account.status dropped
+2022-09-24 16:30:46,404 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-status-timeline.yml::1662047241256-4::Alan.Boshier (generated) ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca109-status-timeline.yml::1662047241256-5::Alan.Boshier (generated)
+2022-09-24 16:30:46,407 INFO  [liq.changelog] (main) Column care_account.status_start_date dropped
+2022-09-24 16:30:46,408 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-status-timeline.yml::1662047241256-5::Alan.Boshier (generated) ran successfully in 2ms
+Running Changeset: db/changelog/changesets/ca109-status-timeline.yml::1662047241256-1::Alan.Boshier (generated)
+2022-09-24 16:30:46,411 INFO  [liq.changelog] (main) NOT NULL constraint has been added to personal_budget_interval.effective_from
+2022-09-24 16:30:46,412 INFO  [liq.changelog] (main) ChangeSet db/changelog/changesets/ca109-status-timeline.yml::1662047241256-1::Alan.Boshier (generated) ran successfully in 2ms
+2022-09-24 16:30:46,415 INFO  [liq.lockservice] (main) Successfully released change log lock
+2022-09-24 16:30:46,865 INFO  [io.sma.rea.mes.rabbitmq] (main) SRMSG17036: RabbitMQ broker configured to localhost:54373 for channel careaccountEventsChannel
+2022-09-24 16:30:46,945 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) careaccount service started
+2022-09-24 16:30:46,945 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>> Configuration Settings >>>>>>>
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account Self-Funded Classifier: erewhon
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account LA-Funded Classifiers: [i.vitelloni, il.bidone]
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Case Note Practitioner Organisation: SMERSH
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Daily Living Costs: GBP200.00
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Cap Value: GBP86000.00
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Lower Capital Limit: GBP20000.00
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Upper Capital Limit: GBP100000.00
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Minimum value: GBP0.01
+2022-09-24 16:30:46,946 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Maximum value: GBP99999.00
+2022-09-24 16:30:46,947 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2022-09-24 16:30:46,974 INFO  [io.quarkus] (main) careaccount-service 0.0.1-SNAPSHOT on JVM (powered by Quarkus 2.11.2.Final) started in 15.600s. Listening on: http://localhost:54462
+2022-09-24 16:30:46,974 INFO  [io.quarkus] (main) Profile test activated. 
+2022-09-24 16:30:46,974 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, kubernetes, kubernetes-client, liquibase, logging-gelf, logging-manager, micrometer, narayana-jta, oidc, oidc-client, oidc-client-filter, oidc-token-propagation, opentelemetry, qute, rest-client, rest-client-jackson, resteasy, resteasy-jackson, resteasy-mutiny, resteasy-qute, scheduler, security, security-properties-file, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, smallrye-openapi, smallrye-reactive-messaging, smallrye-reactive-messaging-rabbitmq, spring-data-jpa, spring-di, swagger-ui, vertx]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.928 s - in com.olmgroup.msp.service.careaccount.CareAccountApplicationTests
+[INFO] Running com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountRepositoryTest
+2022-09-24 16:30:47,743 WARN  [com.olm.msp.ser.car.cor.sec.aut.RoleAugmentor] (main) WARNING - RUNNING WITH PERMISSION CHECK DISABLED!!
+2022-09-24 16:30:47,750 WARN  [org.jbo.res.res.i18n] (main) RESTEASY002160: Provider instance com.olmgroup.msp.service.careaccount.core.rest.client.LogFilter is already registered.  2nd registration is being ignored.
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.328 s - in com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountRepositoryTest
+[INFO] Running com.olmgroup.msp.service.careaccount.core.mapping.TrimWhitespaceTest
+2022-09-24 16:30:47,964 INFO  [org.ecl.jet.uti.log] (main) Logging initialized @24388ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-09-24 16:30:48,054 INFO  [io.ver.rab.imp.RabbitMQClientImpl] (main) Stopping rabbitmq client
+2022-09-24 16:30:48,084 INFO  [io.quarkus] (main) careaccount-service stopped in 0.235s
+2022-09-24 16:30:48,443 INFO  [io.qua.dev.com.ContainerShutdownCloseable] (main) Dev Services for PostgreSQL shut down.
+2022-09-24 16:30:48,861 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (main) Dev Services for RabbitMQ shut down.
+2022-09-24 16:30:51,367 WARN  [io.qua.res.mut.dep.ResteasyMutinyProcessor] (build-17) The quarkus-resteasy-mutiny extension is deprecated. Switch to RESTEasy Reactive instead.
+This extension adds support for Uni and Multi to RESTEasy 'classic', without using the reactive execution model, as RESTEasy classic does not use it. To properly integrate Mutiny and RESTEasy, use RESTEasy Reactive. See https://quarkus.io/guides/getting-started-reactive for detailed instructions
+2022-09-24 16:30:51,471 INFO  [io.qua.ely.sec.pro.dep.ElytronPropertiesProcessor] (build-45) Configuring from MPRealmConfig
+2022-09-24 16:30:51,755 WARN  [io.qua.arc.dep.SplitPackageProcessor] (build-12) Detected a split package usage which is considered a bad practice and should be avoided. Following packages were detected in multiple archives: 
+- "io.smallrye.reactive.messaging.providers.connectors" found in [io.smallrye.reactive:smallrye-reactive-messaging-in-memory::jar, io.smallrye.reactive:smallrye-reactive-messaging-provider::jar]
+2022-09-24 16:30:51,793 WARN  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-60) Unable to start devservices for default datasource as this datasource type (h2) does not support devservices
+2022-09-24 16:30:51,925 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-41) Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2022-09-24 16:30:53,265 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-41) Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2022-09-24 16:30:53,274 INFO  [org.tes.DockerClientFactory] (build-41) Docker host IP address is localhost
+2022-09-24 16:30:53,298 INFO  [org.tes.DockerClientFactory] (build-41) Connected to docker: 
+  Server Version: 20.10.17
+  API Version: 1.41
+  Operating System: Docker Desktop
+  Total Memory: 15955 MB
+2022-09-24 16:30:53,358 INFO  [org.tes.uti.ImageNameSubstitutor] (build-41) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2022-09-24 16:30:53,421 INFO  [doc.3.3]] (build-41) Creating container for image: testcontainers/ryuk:0.3.3
+2022-09-24 16:30:53,726 INFO  [org.tes.uti.RegistryAuthLocator] (build-41) Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2022-09-24 16:30:53,809 INFO  [doc.3.3]] (build-41) Container testcontainers/ryuk:0.3.3 is starting: bb48ba9ae9d333853a734d4abb6f536b95007ab36adf0744ce7b259c8f95533d
+2022-09-24 16:30:54,253 INFO  [doc.3.3]] (build-41) Container testcontainers/ryuk:0.3.3 started in PT0.8805892S
+2022-09-24 16:30:54,256 INFO  [org.tes.uti.RyukResourceReaper] (build-41) Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2022-09-24 16:30:54,256 INFO  [org.tes.DockerClientFactory] (build-41) Checking the system...
+2022-09-24 16:30:54,256 INFO  [org.tes.DockerClientFactory] (build-41) ?? Docker server version should be at least 1.6.0
+2022-09-24 16:30:54,259 INFO  [doc.9-management]] (build-41) Creating container for image: rabbitmq:3.9-management
+2022-09-24 16:30:54,322 INFO  [doc.9-management]] (build-41) Container rabbitmq:3.9-management is starting: cbea5161ab34d206aef2b6f5f2a76283f9e5bb57713056a4f381a40d4a1b6d72
+2022-09-24 16:31:00,310 INFO  [doc.9-management]] (build-41) Container rabbitmq:3.9-management started in PT6.051523S
+2022-09-24 16:31:00,311 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-41) Dev Services for RabbitMQ started.
+2022-09-24 16:31:00,311 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-41) Other Quarkus applications in dev mode will find the broker automatically. For Quarkus applications in production mode, you can connect to this by starting your application with -Drabbitmq-host=localhost -Drabbitmq-port=54547 -Drabbitmq-username=guest -Drabbitmq-password=guest
+2022-09-24 16:31:00,809 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.datasource.devservices" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2022-09-24 16:31:01,967 WARN  [io.qua.agr.run.AgroalConnectionConfigurer] (main) Agroal does not support detecting if a connection is still usable after an exception for database kind: h2
+2022-09-24 16:31:02,668 WARN  [io.qua.ope.run.tra.LateBoundSampler] (vert.x-eventloop-thread-2) No Sampler delegate specified, no action taken.
+2022-09-24 16:31:03,345 INFO  [io.sma.rea.mes.rabbitmq] (main) SRMSG17036: RabbitMQ broker configured to localhost:54547 for channel careaccountEventsChannel
+2022-09-24 16:31:03,403 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) careaccount service started
+2022-09-24 16:31:03,403 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>> Configuration Settings >>>>>>>
+2022-09-24 16:31:03,403 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account Self-Funded Classifier: erewhon
+2022-09-24 16:31:03,403 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account LA-Funded Classifiers: [i.vitelloni, il.bidone]
+2022-09-24 16:31:03,403 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Case Note Practitioner Organisation: SMERSH
+2022-09-24 16:31:03,403 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Daily Living Costs: GBP200.00
+2022-09-24 16:31:03,404 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Cap Value: GBP86000.00
+2022-09-24 16:31:03,404 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Lower Capital Limit: GBP20000.00
+2022-09-24 16:31:03,404 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Upper Capital Limit: GBP100000.00
+2022-09-24 16:31:03,404 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Minimum value: GBP0.01
+2022-09-24 16:31:03,404 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Maximum value: GBP99999.00
+2022-09-24 16:31:03,404 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2022-09-24 16:31:03,447 INFO  [io.quarkus] (main) careaccount-service 0.0.1-SNAPSHOT on JVM (powered by Quarkus 2.11.2.Final) started in 13.070s. Listening on: http://localhost:54636
+2022-09-24 16:31:03,447 INFO  [io.quarkus] (main) Profile test activated. 
+2022-09-24 16:31:03,447 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, kubernetes, kubernetes-client, liquibase, logging-gelf, logging-manager, micrometer, narayana-jta, oidc, oidc-client, oidc-client-filter, oidc-token-propagation, opentelemetry, qute, rest-client, rest-client-jackson, resteasy, resteasy-jackson, resteasy-mutiny, resteasy-qute, scheduler, security, security-properties-file, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, smallrye-openapi, smallrye-reactive-messaging, smallrye-reactive-messaging-rabbitmq, spring-data-jpa, spring-di, swagger-ui, vertx]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.675 s - in com.olmgroup.msp.service.careaccount.core.mapping.TrimWhitespaceTest
+[INFO] Running com.olmgroup.msp.service.careaccount.core.validation.AtLeastOneNotNullTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in com.olmgroup.msp.service.careaccount.core.validation.AtLeastOneNotNullTest
+[INFO] Running com.olmgroup.msp.service.careaccount.core.validation.FieldMatchTest
+2022-09-24 16:31:03,597 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 1
+Message:- {olm.validation.FieldMatchValidator}
+2022-09-24 16:31:03,598 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 0
+2022-09-24 16:31:03,598 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 2
+Message:- startDate is not before endDate
+Message:- bonjour is not greater than aurevoir
+2022-09-24 16:31:03,598 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 0
+2022-09-24 16:31:03,599 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 1
+Message:- hello is not supposed to be equal to dunno
+2022-09-24 16:31:03,605 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 1
+Message:- {olm.validation.FieldMatchValidator}
+2022-09-24 16:31:03,605 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 0
+2022-09-24 16:31:03,606 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 2
+Message:- bonjour is not greater than aurevoir
+Message:- startDate is not before endDate
+2022-09-24 16:31:03,606 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 0
+2022-09-24 16:31:03,606 INFO  [com.olm.msp.ser.car.cor.val.FieldMatchTest] (main) Violations found: 1
+Message:- hello is not supposed to be equal to dunno
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 s - in com.olmgroup.msp.service.careaccount.core.validation.FieldMatchTest
+[INFO] Running com.olmgroup.msp.service.careaccount.external.casenoteentry.NewCaseNoteEntrySerializerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s - in com.olmgroup.msp.service.careaccount.external.casenoteentry.NewCaseNoteEntrySerializerTest
+[INFO] Running com.olmgroup.msp.service.careaccount.external.managedclassificationassignment.ClassifierAssignmentDeserializerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s - in com.olmgroup.msp.service.careaccount.external.managedclassificationassignment.ClassifierAssignmentDeserializerTest
+[INFO] Running com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountMapperTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountMapperTest
+[INFO] Running com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResourceTest
+2022-09-24 16:31:03,777 INFO  [org.ecl.jet.uti.log] (main) Logging initialized @40202ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-09-24 16:31:03,849 INFO  [io.ver.rab.imp.RabbitMQClientImpl] (main) Stopping rabbitmq client
+2022-09-24 16:31:03,875 INFO  [io.quarkus] (main) careaccount-service stopped in 0.205s
+2022-09-24 16:31:04,232 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (main) Dev Services for RabbitMQ shut down.
+2022-09-24 16:31:06,572 WARN  [io.qua.res.mut.dep.ResteasyMutinyProcessor] (build-6) The quarkus-resteasy-mutiny extension is deprecated. Switch to RESTEasy Reactive instead.
+This extension adds support for Uni and Multi to RESTEasy 'classic', without using the reactive execution model, as RESTEasy classic does not use it. To properly integrate Mutiny and RESTEasy, use RESTEasy Reactive. See https://quarkus.io/guides/getting-started-reactive for detailed instructions
+2022-09-24 16:31:06,682 INFO  [io.qua.ely.sec.pro.dep.ElytronPropertiesProcessor] (build-17) Configuring from MPRealmConfig
+2022-09-24 16:31:06,980 WARN  [io.qua.arc.dep.SplitPackageProcessor] (build-53) Detected a split package usage which is considered a bad practice and should be avoided. Following packages were detected in multiple archives: 
+- "io.smallrye.reactive.messaging.providers.connectors" found in [io.smallrye.reactive:smallrye-reactive-messaging-in-memory::jar, io.smallrye.reactive:smallrye-reactive-messaging-provider::jar]
+2022-09-24 16:31:07,025 WARN  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-10) Unable to start devservices for default datasource as this datasource type (h2) does not support devservices
+2022-09-24 16:31:07,142 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-34) Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2022-09-24 16:31:08,444 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-34) Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2022-09-24 16:31:08,453 INFO  [org.tes.DockerClientFactory] (build-34) Docker host IP address is localhost
+2022-09-24 16:31:08,487 INFO  [org.tes.DockerClientFactory] (build-34) Connected to docker: 
+  Server Version: 20.10.17
+  API Version: 1.41
+  Operating System: Docker Desktop
+  Total Memory: 15955 MB
+2022-09-24 16:31:08,529 INFO  [org.tes.uti.ImageNameSubstitutor] (build-34) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2022-09-24 16:31:08,576 INFO  [doc.3.3]] (build-34) Creating container for image: testcontainers/ryuk:0.3.3
+2022-09-24 16:31:08,930 INFO  [org.tes.uti.RegistryAuthLocator] (build-34) Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2022-09-24 16:31:09,006 INFO  [doc.3.3]] (build-34) Container testcontainers/ryuk:0.3.3 is starting: 0b1ae4d956269bc80c48874dd9895a730a968f74f6a4824a63018297c53b742e
+2022-09-24 16:31:09,413 INFO  [doc.3.3]] (build-34) Container testcontainers/ryuk:0.3.3 started in PT0.8625374S
+2022-09-24 16:31:09,416 INFO  [org.tes.uti.RyukResourceReaper] (build-34) Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2022-09-24 16:31:09,416 INFO  [org.tes.DockerClientFactory] (build-34) Checking the system...
+2022-09-24 16:31:09,416 INFO  [org.tes.DockerClientFactory] (build-34) ?? Docker server version should be at least 1.6.0
+2022-09-24 16:31:09,419 INFO  [doc.9-management]] (build-34) Creating container for image: rabbitmq:3.9-management
+2022-09-24 16:31:09,486 INFO  [doc.9-management]] (build-34) Container rabbitmq:3.9-management is starting: c1e596d610a3355b05fe16db57d973fd0cc2d6c645f69acfa71ad469f39f13f5
+2022-09-24 16:31:15,586 INFO  [doc.9-management]] (build-34) Container rabbitmq:3.9-management started in PT6.1675254S
+2022-09-24 16:31:15,587 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-34) Dev Services for RabbitMQ started.
+2022-09-24 16:31:15,587 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-34) Other Quarkus applications in dev mode will find the broker automatically. For Quarkus applications in production mode, you can connect to this by starting your application with -Drabbitmq-host=localhost -Drabbitmq-port=54726 -Drabbitmq-username=guest -Drabbitmq-password=guest
+2022-09-24 16:31:16,016 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.datasource.devservices" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2022-09-24 16:31:17,187 WARN  [io.qua.agr.run.AgroalConnectionConfigurer] (main) Agroal does not support detecting if a connection is still usable after an exception for database kind: h2
+2022-09-24 16:31:17,899 WARN  [io.qua.ope.run.tra.LateBoundSampler] (vert.x-eventloop-thread-2) No Sampler delegate specified, no action taken.
+2022-09-24 16:31:18,542 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) careaccount service started
+2022-09-24 16:31:18,542 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>> Configuration Settings >>>>>>>
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account Self-Funded Classifier: erewhon
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account LA-Funded Classifiers: [i.vitelloni, il.bidone]
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Case Note Practitioner Organisation: SMERSH
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Daily Living Costs: GBP200.00
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Cap Value: GBP86000.00
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Lower Capital Limit: GBP20000.00
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Upper Capital Limit: GBP100000.00
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Minimum value: GBP0.01
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Maximum value: GBP99999.00
+2022-09-24 16:31:18,543 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2022-09-24 16:31:18,563 INFO  [io.quarkus] (main) careaccount-service 0.0.1-SNAPSHOT on JVM (powered by Quarkus 2.11.2.Final) started in 12.987s. Listening on: http://localhost:54811
+2022-09-24 16:31:18,563 INFO  [io.quarkus] (main) Profile test activated. 
+2022-09-24 16:31:18,564 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, kubernetes, kubernetes-client, liquibase, logging-gelf, logging-manager, micrometer, narayana-jta, oidc, oidc-client, oidc-client-filter, oidc-token-propagation, opentelemetry, qute, rest-client, rest-client-jackson, resteasy, resteasy-jackson, resteasy-mutiny, resteasy-qute, scheduler, security, security-properties-file, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, smallrye-openapi, smallrye-reactive-messaging, smallrye-reactive-messaging-rabbitmq, spring-data-jpa, spring-di, swagger-ui, vertx]
+2022-09-24 16:31:19,435 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to return the care account with id -1
+2022-09-24 16:31:19,654 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to record a new personal budget of a CareAccount with id -999
+2022-09-24 16:31:19,659 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: InvalidCareAccountFundingTypeException(id=-999, fundingType=LA_FUNDED, paramMap={fundingType=LA_FUNDED, id=-999})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.recordPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.recordCareAccountPersonalBudget(CareAccountResource.java:156)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$4.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.recordCareAccountPersonalBudget(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,661 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type InvalidCareAccountFundingTypeException
+2022-09-24 16:31:19,661 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type InvalidCareAccountFundingTypeException
+2022-09-24 16:31:19,716 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to change the status of a CareAccount with id -1 to state close
+2022-09-24 16:31:19,735 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to return the care account for the person with id xyzzy
+2022-09-24 16:31:19,737 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: CareAccountNotFoundException(id=null, accountHolderId=xyzzy, paramMap={accountHolderId=xyzzy})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.findByAccountHolderId(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.findByAccountHolderId(CareAccountResource.java:77)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.findByAccountHolderId$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$2.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.findByAccountHolderId(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.findByAccountHolderId(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,737 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type CareAccountNotFoundException
+2022-09-24 16:31:19,737 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type CareAccountNotFoundException
+2022-09-24 16:31:19,772 ERROR [com.olm.msp.ser.car.cor.res.exc.RestViolationExceptionHandler] (executor-thread-0) Custom constraint violation exception handler invoked: [PARAMETER][recordCareAccountPersonalBudget.updateCareAccountPersonalBudgetVO.personalBudget][Value must be in "GBP"][AED11.22]
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:37)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.recordCareAccountPersonalBudget(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,773 ERROR [com.olm.msp.ser.car.cor.res.exc.RestViolationExceptionHandler] (executor-thread-0) Handling  custom exception of type ResteasyViolationExceptionImpl
+2022-09-24 16:31:19,790 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to record a new personal budget of a CareAccount with id -999
+2022-09-24 16:31:19,791 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: CareAccountNotFoundException(id=-999, accountHolderId=null, paramMap={id=-999})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.recordPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.recordCareAccountPersonalBudget(CareAccountResource.java:156)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$4.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.recordCareAccountPersonalBudget(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,792 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type CareAccountNotFoundException
+2022-09-24 16:31:19,792 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type CareAccountNotFoundException
+2022-09-24 16:31:19,806 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to change the status of a CareAccount with id -999 to state close
+2022-09-24 16:31:19,808 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: InvalidStatusTransitionDateException(paramMap={endDate=2022-01-11, startDate=2022-01-09}, startDate=2022-01-09, endDate=2022-01-11)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.closeCareAccount(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.closeCareAccount(CareAccountResource.java:119)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$1.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.closeCareAccount(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,808 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type InvalidStatusTransitionDateException
+2022-09-24 16:31:19,808 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type InvalidStatusTransitionDateException
+2022-09-24 16:31:19,822 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to change the status of a CareAccount with id -999 to state close
+2022-09-24 16:31:19,826 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: StaleVersionException(resourceName=CareAccount, resourceId=-999, params={resourceId=-999, resourceName=CareAccount})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.closeCareAccount(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.closeCareAccount(CareAccountResource.java:119)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$1.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.closeCareAccount(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,826 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type StaleVersionException
+2022-09-24 16:31:19,826 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type StaleVersionException
+2022-09-24 16:31:19,841 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to record a new personal budget of a CareAccount with id -999
+2022-09-24 16:31:19,842 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: PersonalBudgetOutOfBoundsException(paramMap={minValue=GBP10.01, maxValue=GBP12.50})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.recordPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.recordCareAccountPersonalBudget(CareAccountResource.java:156)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$4.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.recordCareAccountPersonalBudget(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,842 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type PersonalBudgetOutOfBoundsException
+2022-09-24 16:31:19,842 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type PersonalBudgetOutOfBoundsException
+2022-09-24 16:31:19,854 ERROR [com.olm.msp.ser.car.cor.sec.aut.AuthorizationExceptionMapper] (executor-thread-0) Custom authorization exception handler invoked: io.quarkus.security.ForbiddenException
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.doApply(RolesAllowedCheck.java:72)
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.apply(RolesAllowedCheck.java:55)
+	at io.quarkus.security.runtime.interceptor.SecurityConstrainer.check(SecurityConstrainer.java:32)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:46)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.closeCareAccount(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,868 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to record a new personal budget of a CareAccount with id -999
+2022-09-24 16:31:19,869 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: StaleVersionException(resourceName=CareAccount, resourceId=-999, params={resourceId=-999, resourceName=CareAccount})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.recordPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.recordCareAccountPersonalBudget(CareAccountResource.java:156)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$4.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.recordCareAccountPersonalBudget(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,869 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type StaleVersionException
+2022-09-24 16:31:19,869 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type StaleVersionException
+2022-09-24 16:31:19,879 ERROR [com.olm.msp.ser.car.cor.sec.aut.AuthorizationExceptionMapper] (executor-thread-0) Custom authorization exception handler invoked: io.quarkus.security.ForbiddenException
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.doApply(RolesAllowedCheck.java:72)
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.apply(RolesAllowedCheck.java:55)
+	at io.quarkus.security.runtime.interceptor.SecurityConstrainer.check(SecurityConstrainer.java:32)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:46)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.findByAccountHolderId(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.findByAccountHolderId(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,889 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to return the care account with id -1
+2022-09-24 16:31:19,900 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to return the care account with id -999
+2022-09-24 16:31:19,901 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: CareAccountNotFoundException(id=-999, accountHolderId=null, paramMap={id=-999})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.findById(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.findById(CareAccountResource.java:57)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.findById$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$3.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.findById(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.findById(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,902 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type CareAccountNotFoundException
+2022-09-24 16:31:19,902 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type CareAccountNotFoundException
+2022-09-24 16:31:19,914 ERROR [com.olm.msp.ser.car.cor.sec.aut.AuthorizationExceptionMapper] (executor-thread-0) Custom authorization exception handler invoked: io.quarkus.security.ForbiddenException
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.doApply(RolesAllowedCheck.java:72)
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.apply(RolesAllowedCheck.java:55)
+	at io.quarkus.security.runtime.interceptor.SecurityConstrainer.check(SecurityConstrainer.java:32)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:46)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.recordCareAccountPersonalBudget(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,940 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to record a new personal budget of a CareAccount with id -999
+2022-09-24 16:31:19,941 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: InvalidPersonalBudgetTransitionDateException(paramMap={endDate=2022-01-11, startDate=2022-01-09}, startDate=2022-01-09, endDate=2022-01-11)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.recordPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.recordCareAccountPersonalBudget(CareAccountResource.java:156)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$4.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.recordCareAccountPersonalBudget(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.recordCareAccountPersonalBudget(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,941 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type InvalidPersonalBudgetTransitionDateException
+2022-09-24 16:31:19,941 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type InvalidPersonalBudgetTransitionDateException
+2022-09-24 16:31:19,957 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to change the status of a CareAccount with id -1 to state defenestrate
+2022-09-24 16:31:19,958 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: InvalidCareAccountStatusException(paramMap={careAccountStatus=defenestrate})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.closeCareAccount(CareAccountResource.java:121)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$1.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.closeCareAccount(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,958 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type InvalidCareAccountStatusException
+2022-09-24 16:31:19,958 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type InvalidCareAccountStatusException
+2022-09-24 16:31:19,968 ERROR [com.olm.msp.ser.car.cor.sec.aut.AuthorizationExceptionMapper] (executor-thread-0) Custom authorization exception handler invoked: io.quarkus.security.ForbiddenException
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.doApply(RolesAllowedCheck.java:72)
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.apply(RolesAllowedCheck.java:55)
+	at io.quarkus.security.runtime.interceptor.SecurityConstrainer.check(SecurityConstrainer.java:32)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:46)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.findById(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.findById(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:19,979 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to record a new personal budget of a CareAccount with id -1
+2022-09-24 16:31:19,990 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to return the care account for the person with id xyzzy
+2022-09-24 16:31:19,999 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to return the care account for the person with id xyzzy
+2022-09-24 16:31:20,013 INFO  [com.olm.msp.ser.car.mod.car.CareAccountResource] (executor-thread-0) Request to change the status of a CareAccount with id -999 to state close
+2022-09-24 16:31:20,014 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: CareAccountNotFoundException(id=-999, accountHolderId=null, paramMap={id=-999})
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceImpl_ClientProxy.closeCareAccount(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource.closeCareAccount(CareAccountResource.java:119)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass$$function$$1.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:71)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor.validateMethodInvocation(JaxrsEndPointValidationInterceptor.java:35)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.JaxrsEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_Subclass.closeCareAccount(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResource_ClientProxy.closeCareAccount(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:31:20,014 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type CareAccountNotFoundException
+2022-09-24 16:31:20,014 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type CareAccountNotFoundException
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.351 s - in com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountResourceTest
+[INFO] Running com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceTest
+2022-09-24 16:31:20,164 INFO  [org.ecl.jet.uti.log] (main) Logging initialized @56589ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-09-24 16:31:20,256 INFO  [io.quarkus] (main) careaccount-service stopped in 0.225s
+2022-09-24 16:31:20,632 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (main) Dev Services for RabbitMQ shut down.
+2022-09-24 16:31:22,949 WARN  [io.qua.res.mut.dep.ResteasyMutinyProcessor] (build-45) The quarkus-resteasy-mutiny extension is deprecated. Switch to RESTEasy Reactive instead.
+This extension adds support for Uni and Multi to RESTEasy 'classic', without using the reactive execution model, as RESTEasy classic does not use it. To properly integrate Mutiny and RESTEasy, use RESTEasy Reactive. See https://quarkus.io/guides/getting-started-reactive for detailed instructions
+2022-09-24 16:31:23,056 INFO  [io.qua.ely.sec.pro.dep.ElytronPropertiesProcessor] (build-54) Configuring from MPRealmConfig
+2022-09-24 16:31:23,305 WARN  [io.qua.arc.dep.SplitPackageProcessor] (build-50) Detected a split package usage which is considered a bad practice and should be avoided. Following packages were detected in multiple archives: 
+- "io.smallrye.reactive.messaging.providers.connectors" found in [io.smallrye.reactive:smallrye-reactive-messaging-in-memory::jar, io.smallrye.reactive:smallrye-reactive-messaging-provider::jar]
+2022-09-24 16:31:23,346 WARN  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-6) Unable to start devservices for default datasource as this datasource type (h2) does not support devservices
+2022-09-24 16:31:23,486 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-62) Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2022-09-24 16:31:24,735 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-62) Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2022-09-24 16:31:24,748 INFO  [org.tes.DockerClientFactory] (build-62) Docker host IP address is localhost
+2022-09-24 16:31:24,773 INFO  [org.tes.DockerClientFactory] (build-62) Connected to docker: 
+  Server Version: 20.10.17
+  API Version: 1.41
+  Operating System: Docker Desktop
+  Total Memory: 15955 MB
+2022-09-24 16:31:24,814 INFO  [org.tes.uti.ImageNameSubstitutor] (build-62) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2022-09-24 16:31:24,866 INFO  [doc.3.3]] (build-62) Creating container for image: testcontainers/ryuk:0.3.3
+2022-09-24 16:31:25,170 INFO  [org.tes.uti.RegistryAuthLocator] (build-62) Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2022-09-24 16:31:25,248 INFO  [doc.3.3]] (build-62) Container testcontainers/ryuk:0.3.3 is starting: f083150ebc4f221d1e9b032fc3158273294cf22ee3fd9bad4f49fafa62c83f3d
+2022-09-24 16:31:25,653 INFO  [doc.3.3]] (build-62) Container testcontainers/ryuk:0.3.3 started in PT0.8261927S
+2022-09-24 16:31:25,656 INFO  [org.tes.uti.RyukResourceReaper] (build-62) Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2022-09-24 16:31:25,656 INFO  [org.tes.DockerClientFactory] (build-62) Checking the system...
+2022-09-24 16:31:25,657 INFO  [org.tes.DockerClientFactory] (build-62) ?? Docker server version should be at least 1.6.0
+2022-09-24 16:31:25,659 INFO  [doc.9-management]] (build-62) Creating container for image: rabbitmq:3.9-management
+2022-09-24 16:31:25,724 INFO  [doc.9-management]] (build-62) Container rabbitmq:3.9-management is starting: 0f16deebef357c502488b7d526bf89f5c29f0d912c6489f322ec816f7c70bf43
+2022-09-24 16:31:31,767 INFO  [doc.9-management]] (build-62) Container rabbitmq:3.9-management started in PT6.1076258S
+2022-09-24 16:31:31,768 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-62) Dev Services for RabbitMQ started.
+2022-09-24 16:31:31,768 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-62) Other Quarkus applications in dev mode will find the broker automatically. For Quarkus applications in production mode, you can connect to this by starting your application with -Drabbitmq-host=localhost -Drabbitmq-port=54919 -Drabbitmq-username=guest -Drabbitmq-password=guest
+2022-09-24 16:31:32,190 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.datasource.devservices" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2022-09-24 16:31:33,327 WARN  [io.qua.agr.run.AgroalConnectionConfigurer] (main) Agroal does not support detecting if a connection is still usable after an exception for database kind: h2
+2022-09-24 16:31:33,966 WARN  [io.qua.ope.run.tra.LateBoundSampler] (vert.x-eventloop-thread-2) No Sampler delegate specified, no action taken.
+2022-09-24 16:31:34,603 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) careaccount service started
+2022-09-24 16:31:34,603 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>> Configuration Settings >>>>>>>
+2022-09-24 16:31:34,603 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account Self-Funded Classifier: erewhon
+2022-09-24 16:31:34,603 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account LA-Funded Classifiers: [i.vitelloni, il.bidone]
+2022-09-24 16:31:34,603 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Case Note Practitioner Organisation: SMERSH
+2022-09-24 16:31:34,603 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Daily Living Costs: GBP200.00
+2022-09-24 16:31:34,603 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Cap Value: GBP86000.00
+2022-09-24 16:31:34,603 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Lower Capital Limit: GBP20000.00
+2022-09-24 16:31:34,604 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Upper Capital Limit: GBP100000.00
+2022-09-24 16:31:34,604 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Minimum value: GBP0.01
+2022-09-24 16:31:34,604 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Maximum value: GBP99999.00
+2022-09-24 16:31:34,604 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2022-09-24 16:31:34,641 INFO  [io.quarkus] (main) careaccount-service 0.0.1-SNAPSHOT on JVM (powered by Quarkus 2.11.2.Final) started in 12.641s. Listening on: http://localhost:55005
+2022-09-24 16:31:34,641 INFO  [io.quarkus] (main) Profile test activated. 
+2022-09-24 16:31:34,641 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, kubernetes, kubernetes-client, liquibase, logging-gelf, logging-manager, micrometer, narayana-jta, oidc, oidc-client, oidc-client-filter, oidc-token-propagation, opentelemetry, qute, rest-client, rest-client-jackson, resteasy, resteasy-jackson, resteasy-mutiny, resteasy-qute, scheduler, security, security-properties-file, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, smallrye-openapi, smallrye-reactive-messaging, smallrye-reactive-messaging-rabbitmq, spring-data-jpa, spring-di, swagger-ui, vertx]
+2022-09-24 16:31:35,077 WARN  [com.olm.msp.ser.car.cor.sec.aut.RoleAugmentor] (main) WARNING - RUNNING WITH PERMISSION CHECK DISABLED!!
+2022-09-24 16:31:35,083 WARN  [org.jbo.res.res.i18n] (main) RESTEASY002160: Provider instance com.olmgroup.msp.service.careaccount.core.rest.client.LogFilter is already registered.  2nd registration is being ignored.
+2022-09-24 16:31:35,192 INFO  [com.olm.msp.ser.car.mod.car.CareAccountServiceImpl] (main) Creating CNE CARE_ACCOUNT.CLOSURE for practitioner with id null belonging to organisation SMERSH
+2022-09-24 16:31:35,229 INFO  [com.olm.msp.ser.car.mod.car.CareAccountServiceImpl] (main) Sending a message to the careaccount channel
+2022-09-24 16:31:35,290 INFO  [com.olm.msp.ser.car.mod.car.CareAccountServiceImpl] (main) Sending a message to the careaccount channel
+2022-09-24 16:31:35,302 INFO  [com.olm.msp.ser.car.mod.car.CareAccountServiceImpl] (main) Sending a message to the careaccount channel
+2022-09-24 16:31:35,336 INFO  [com.olm.msp.ser.car.mod.car.CareAccountServiceImpl] (main) Creating CNE CARE_ACCOUNT.CLOSURE for practitioner with id null belonging to organisation SMERSH
+2022-09-24 16:31:35,338 INFO  [com.olm.msp.ser.car.mod.car.CareAccountServiceImpl] (main) Sending a message to the careaccount channel
+2022-09-24 16:31:35,363 INFO  [com.olm.msp.ser.car.mod.car.CareAccountServiceImpl] (main) Sending a message to the careaccount channel
+2022-09-24 16:31:35,390 INFO  [com.olm.msp.ser.car.mod.car.CareAccountServiceImpl] (main) Sending a message to the careaccount channel
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.379 s - in com.olmgroup.msp.service.careaccount.models.careaccount.CareAccountServiceTest
+[INFO] Running com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountFundingTypeHistoryServiceTest
+2022-09-24 16:31:35,513 INFO  [org.ecl.jet.uti.log] (main) Logging initialized @71937ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-09-24 16:31:35,613 INFO  [io.quarkus] (main) careaccount-service stopped in 0.201s
+2022-09-24 16:31:36,033 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (main) Dev Services for RabbitMQ shut down.
+2022-09-24 16:31:38,410 WARN  [io.qua.res.mut.dep.ResteasyMutinyProcessor] (build-36) The quarkus-resteasy-mutiny extension is deprecated. Switch to RESTEasy Reactive instead.
+This extension adds support for Uni and Multi to RESTEasy 'classic', without using the reactive execution model, as RESTEasy classic does not use it. To properly integrate Mutiny and RESTEasy, use RESTEasy Reactive. See https://quarkus.io/guides/getting-started-reactive for detailed instructions
+2022-09-24 16:31:38,485 INFO  [io.qua.ely.sec.pro.dep.ElytronPropertiesProcessor] (build-11) Configuring from MPRealmConfig
+2022-09-24 16:31:38,769 WARN  [io.qua.arc.dep.SplitPackageProcessor] (build-31) Detected a split package usage which is considered a bad practice and should be avoided. Following packages were detected in multiple archives: 
+- "io.smallrye.reactive.messaging.providers.connectors" found in [io.smallrye.reactive:smallrye-reactive-messaging-in-memory::jar, io.smallrye.reactive:smallrye-reactive-messaging-provider::jar]
+2022-09-24 16:31:38,810 WARN  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-68) Unable to start devservices for default datasource as this datasource type (h2) does not support devservices
+2022-09-24 16:31:38,977 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-47) Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2022-09-24 16:31:40,300 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-47) Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2022-09-24 16:31:40,312 INFO  [org.tes.DockerClientFactory] (build-47) Docker host IP address is localhost
+2022-09-24 16:31:40,335 INFO  [org.tes.DockerClientFactory] (build-47) Connected to docker: 
+  Server Version: 20.10.17
+  API Version: 1.41
+  Operating System: Docker Desktop
+  Total Memory: 15955 MB
+2022-09-24 16:31:40,375 INFO  [org.tes.uti.ImageNameSubstitutor] (build-47) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2022-09-24 16:31:40,406 INFO  [doc.3.3]] (build-47) Creating container for image: testcontainers/ryuk:0.3.3
+2022-09-24 16:31:40,701 INFO  [org.tes.uti.RegistryAuthLocator] (build-47) Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2022-09-24 16:31:40,783 INFO  [doc.3.3]] (build-47) Container testcontainers/ryuk:0.3.3 is starting: 48f3a3e162b45ee772d06da2802158a63a93b7181f9040eabd2cc36247845d72
+2022-09-24 16:31:41,223 INFO  [doc.3.3]] (build-47) Container testcontainers/ryuk:0.3.3 started in PT0.8405004S
+2022-09-24 16:31:41,226 INFO  [org.tes.uti.RyukResourceReaper] (build-47) Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2022-09-24 16:31:41,226 INFO  [org.tes.DockerClientFactory] (build-47) Checking the system...
+2022-09-24 16:31:41,227 INFO  [org.tes.DockerClientFactory] (build-47) ?? Docker server version should be at least 1.6.0
+2022-09-24 16:31:41,229 INFO  [doc.9-management]] (build-47) Creating container for image: rabbitmq:3.9-management
+2022-09-24 16:31:41,297 INFO  [doc.9-management]] (build-47) Container rabbitmq:3.9-management is starting: 90dcfdf80c49f28fbfafb9ce0a2a9ee29c5ce9d203f9b52806688f97ece3ffdf
+2022-09-24 16:31:47,354 INFO  [doc.9-management]] (build-47) Container rabbitmq:3.9-management started in PT6.1248878S
+2022-09-24 16:31:47,354 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-47) Dev Services for RabbitMQ started.
+2022-09-24 16:31:47,355 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-47) Other Quarkus applications in dev mode will find the broker automatically. For Quarkus applications in production mode, you can connect to this by starting your application with -Drabbitmq-host=localhost -Drabbitmq-port=55092 -Drabbitmq-username=guest -Drabbitmq-password=guest
+2022-09-24 16:31:47,681 INFO  [org.ecl.jet.uti.log] (pool-48-thread-1) Logging initialized @84106ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-09-24 16:31:47,834 INFO  [org.ecl.jet.ser.Server] (pool-48-thread-1) jetty-9.4.46.v20220331; built: 2022-03-31T16:38:08.030Z; git: bc17a0369a11ecf40bb92c839b9ef0a8ac50ea18; jvm 11.0.16+8-LTS
+2022-09-24 16:31:47,845 INFO  [org.ecl.jet.ser.han.ContextHandler] (pool-48-thread-1) Started o.e.j.s.ServletContextHandler@b07bedf{/__admin,null,AVAILABLE}
+2022-09-24 16:31:47,850 INFO  [org.ecl.jet.ser.han.Con.ROOT] (pool-48-thread-1) RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2022-09-24 16:31:47,850 INFO  [org.ecl.jet.ser.han.ContextHandler] (pool-48-thread-1) Started o.e.j.s.ServletContextHandler@172f92bd{/,null,AVAILABLE}
+2022-09-24 16:31:47,856 INFO  [org.ecl.jet.ser.AbstractConnector] (pool-48-thread-1) Started NetworkTrafficServerConnector@75069356{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:55094}
+2022-09-24 16:31:47,856 INFO  [org.ecl.jet.ser.Server] (pool-48-thread-1) Started @84280ms
+2022-09-24 16:31:47,858 INFO  [com.olm.msp.ser.car.cor.int.WireMockServerFactory] (pool-48-thread-1) Wiremock listening on port 55094
+2022-09-24 16:31:47,973 INFO  [org.ecl.jet.ser.han.Con.__admin] (qtp2077660270-811) RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.AdminRequestHandler. Normalized mapped under returned 'null'
+2022-09-24 16:31:48,228 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.datasource.devservices" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2022-09-24 16:31:49,273 WARN  [io.qua.agr.run.AgroalConnectionConfigurer] (main) Agroal does not support detecting if a connection is still usable after an exception for database kind: h2
+2022-09-24 16:31:49,959 WARN  [io.qua.ope.run.tra.LateBoundSampler] (vert.x-eventloop-thread-2) No Sampler delegate specified, no action taken.
+2022-09-24 16:31:50,563 INFO  [io.sma.rea.mes.rabbitmq] (main) SRMSG17036: RabbitMQ broker configured to localhost:55092 for channel careaccountEventsChannel
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) careaccount service started
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>> Configuration Settings >>>>>>>
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account Self-Funded Classifier: erewhon
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account LA-Funded Classifiers: [i.vitelloni, il.bidone]
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Case Note Practitioner Organisation: SMERSH
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Daily Living Costs: GBP200.00
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Cap Value: GBP86000.00
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Lower Capital Limit: GBP20000.00
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Upper Capital Limit: GBP100000.00
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Minimum value: GBP0.01
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Maximum value: GBP99999.00
+2022-09-24 16:31:50,610 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2022-09-24 16:31:50,649 INFO  [io.quarkus] (main) careaccount-service 0.0.1-SNAPSHOT on JVM (powered by Quarkus 2.11.2.Final) started in 13.254s. Listening on: http://localhost:55185
+2022-09-24 16:31:50,649 INFO  [io.quarkus] (main) Profile test activated. 
+2022-09-24 16:31:50,649 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, kubernetes, kubernetes-client, liquibase, logging-gelf, logging-manager, micrometer, narayana-jta, oidc, oidc-client, oidc-client-filter, oidc-token-propagation, opentelemetry, qute, rest-client, rest-client-jackson, resteasy, resteasy-jackson, resteasy-mutiny, resteasy-qute, scheduler, security, security-properties-file, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, smallrye-openapi, smallrye-reactive-messaging, smallrye-reactive-messaging-rabbitmq, spring-data-jpa, spring-di, swagger-ui, vertx]
+2022-09-24 16:31:50,836 INFO  [com.olm.msp.ser.car.cor.res.cli.LogFilter] (executor-thread-0) REST Client request issued: GET http://localhost:55094/eventLogEntry?eventDomain=CareAccount&eventCode=ADD&targetId=-1&size=100&page=0
+2022-09-24 16:31:50,837 INFO  [com.olm.msp.ser.car.cor.res.cli.LogFilter] (executor-thread-0) Authorization: Basic YWRtaW46YWRtaW4xMjM=
+2022-09-24 16:31:50,869 INFO  [com.olm.msp.ser.car.cor.res.cli.LogFilter] (executor-thread-0) REST Client response received: GET http://localhost:55094/eventLogEntry?eventDomain=CareAccount&eventCode=ADD&targetId=-1&size=100&page=0 200 (OK)
+2022-09-24 16:31:50,896 INFO  [com.olm.msp.ser.car.cor.res.cli.LogFilter] (executor-thread-0) REST Client request issued: GET http://localhost:55094/eventLogEntry?eventDomain=CareAccount&eventCode=UPDATE_FUNDING_TYPE&targetId=-1&size=100&page=0
+2022-09-24 16:31:50,896 INFO  [com.olm.msp.ser.car.cor.res.cli.LogFilter] (executor-thread-0) Authorization: Basic YWRtaW46YWRtaW4xMjM=
+2022-09-24 16:31:50,898 INFO  [com.olm.msp.ser.car.cor.res.cli.LogFilter] (executor-thread-0) REST Client response received: GET http://localhost:55094/eventLogEntry?eventDomain=CareAccount&eventCode=UPDATE_FUNDING_TYPE&targetId=-1&size=100&page=0 200 (OK)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.493 s - in com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountFundingTypeHistoryServiceTest
+[INFO] Running com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResourceTest
+2022-09-24 16:31:50,921 INFO  [org.ecl.jet.ser.AbstractConnector] (main) Stopped NetworkTrafficServerConnector@75069356{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2022-09-24 16:31:50,921 INFO  [org.ecl.jet.ser.han.ContextHandler] (main) Stopped o.e.j.s.ServletContextHandler@172f92bd{/,null,STOPPED}
+2022-09-24 16:31:50,922 INFO  [org.ecl.jet.ser.han.ContextHandler] (main) Stopped o.e.j.s.ServletContextHandler@b07bedf{/__admin,null,STOPPED}
+2022-09-24 16:31:50,929 INFO  [io.ver.rab.imp.RabbitMQClientImpl] (main) Stopping rabbitmq client
+2022-09-24 16:31:50,955 INFO  [io.quarkus] (main) careaccount-service stopped in 0.046s
+2022-09-24 16:31:51,322 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (main) Dev Services for RabbitMQ shut down.
+2022-09-24 16:31:53,680 WARN  [io.qua.res.mut.dep.ResteasyMutinyProcessor] (build-7) The quarkus-resteasy-mutiny extension is deprecated. Switch to RESTEasy Reactive instead.
+This extension adds support for Uni and Multi to RESTEasy 'classic', without using the reactive execution model, as RESTEasy classic does not use it. To properly integrate Mutiny and RESTEasy, use RESTEasy Reactive. See https://quarkus.io/guides/getting-started-reactive for detailed instructions
+2022-09-24 16:31:53,752 INFO  [io.qua.ely.sec.pro.dep.ElytronPropertiesProcessor] (build-5) Configuring from MPRealmConfig
+2022-09-24 16:31:54,043 WARN  [io.qua.arc.dep.SplitPackageProcessor] (build-62) Detected a split package usage which is considered a bad practice and should be avoided. Following packages were detected in multiple archives: 
+- "io.smallrye.reactive.messaging.providers.connectors" found in [io.smallrye.reactive:smallrye-reactive-messaging-in-memory::jar, io.smallrye.reactive:smallrye-reactive-messaging-provider::jar]
+2022-09-24 16:31:54,079 WARN  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-56) Unable to start devservices for default datasource as this datasource type (h2) does not support devservices
+2022-09-24 16:31:54,228 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-28) Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2022-09-24 16:31:55,571 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-28) Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2022-09-24 16:31:55,583 INFO  [org.tes.DockerClientFactory] (build-28) Docker host IP address is localhost
+2022-09-24 16:31:55,606 INFO  [org.tes.DockerClientFactory] (build-28) Connected to docker: 
+  Server Version: 20.10.17
+  API Version: 1.41
+  Operating System: Docker Desktop
+  Total Memory: 15955 MB
+2022-09-24 16:31:55,641 INFO  [org.tes.uti.ImageNameSubstitutor] (build-28) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2022-09-24 16:31:55,681 INFO  [doc.3.3]] (build-28) Creating container for image: testcontainers/ryuk:0.3.3
+2022-09-24 16:31:56,153 INFO  [org.tes.uti.RegistryAuthLocator] (build-28) Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2022-09-24 16:31:56,237 INFO  [doc.3.3]] (build-28) Container testcontainers/ryuk:0.3.3 is starting: b958a99e424ff56b13723ba3c2832e0ba7709a1f00d4b46fb3ef1ddca73011e5
+2022-09-24 16:31:56,708 INFO  [doc.3.3]] (build-28) Container testcontainers/ryuk:0.3.3 started in PT1.0510829S
+2022-09-24 16:31:56,711 INFO  [org.tes.uti.RyukResourceReaper] (build-28) Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2022-09-24 16:31:56,711 INFO  [org.tes.DockerClientFactory] (build-28) Checking the system...
+2022-09-24 16:31:56,711 INFO  [org.tes.DockerClientFactory] (build-28) ?? Docker server version should be at least 1.6.0
+2022-09-24 16:31:56,714 INFO  [doc.9-management]] (build-28) Creating container for image: rabbitmq:3.9-management
+2022-09-24 16:31:56,779 INFO  [doc.9-management]] (build-28) Container rabbitmq:3.9-management is starting: 96b28c2098d104b3c3c7a8600c91e9e3e34eb929f73b7850ab74c0968395337e
+2022-09-24 16:32:03,063 INFO  [doc.9-management]] (build-28) Container rabbitmq:3.9-management started in PT6.3488264S
+2022-09-24 16:32:03,063 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-28) Dev Services for RabbitMQ started.
+2022-09-24 16:32:03,063 INFO  [io.qua.sma.rea.rab.dep.RabbitMQDevServicesProcessor] (build-28) Other Quarkus applications in dev mode will find the broker automatically. For Quarkus applications in production mode, you can connect to this by starting your application with -Drabbitmq-host=localhost -Drabbitmq-port=55272 -Drabbitmq-username=guest -Drabbitmq-password=guest
+2022-09-24 16:32:03,485 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.datasource.devservices" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2022-09-24 16:32:04,800 WARN  [io.qua.agr.run.AgroalConnectionConfigurer] (main) Agroal does not support detecting if a connection is still usable after an exception for database kind: h2
+2022-09-24 16:32:05,564 WARN  [io.qua.ope.run.tra.LateBoundSampler] (vert.x-eventloop-thread-2) No Sampler delegate specified, no action taken.
+2022-09-24 16:32:06,452 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) careaccount service started
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>> Configuration Settings >>>>>>>
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account Self-Funded Classifier: erewhon
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Account LA-Funded Classifiers: [i.vitelloni, il.bidone]
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Case Note Practitioner Organisation: SMERSH
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Daily Living Costs: GBP200.00
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Care Cap Value: GBP86000.00
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Lower Capital Limit: GBP20000.00
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > Upper Capital Limit: GBP100000.00
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Minimum value: GBP0.01
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) > IPB Maximum value: GBP99999.00
+2022-09-24 16:32:06,453 INFO  [com.olm.msp.ser.car.CareAccountApplication] (main) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2022-09-24 16:32:06,477 INFO  [io.quarkus] (main) careaccount-service 0.0.1-SNAPSHOT on JVM (powered by Quarkus 2.11.2.Final) started in 13.787s. Listening on: http://localhost:55378
+2022-09-24 16:32:06,477 INFO  [io.quarkus] (main) Profile test activated. 
+2022-09-24 16:32:06,477 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, kubernetes, kubernetes-client, liquibase, logging-gelf, logging-manager, micrometer, narayana-jta, oidc, oidc-client, oidc-client-filter, oidc-token-propagation, opentelemetry, qute, rest-client, rest-client-jackson, resteasy, resteasy-jackson, resteasy-mutiny, resteasy-qute, scheduler, security, security-properties-file, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, smallrye-openapi, smallrye-reactive-messaging, smallrye-reactive-messaging-rabbitmq, spring-data-jpa, spring-di, swagger-ui, vertx]
+2022-09-24 16:32:06,874 INFO  [com.olm.msp.ser.car.mod.car.CareAccountHistoryResource] (executor-thread-0) Request to return the funding type history of the care account with id -1
+2022-09-24 16:32:07,006 INFO  [com.olm.msp.ser.car.mod.car.CareAccountHistoryResource] (executor-thread-0) Request to return the funding type history of the care account with id -999
+2022-09-24 16:32:07,008 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Custom exception handler invoked: CareAccountNotFoundException(id=-999, accountHolderId=null, paramMap={id=-999})
+	at com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryServiceImpl_ClientProxy.getFundingTypeHistory(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResource.getFundingTypeHistory(CareAccountHistoryResource.java:50)
+	at com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResource_Subclass.getFundingTypeHistory$$superforward1(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResource_Subclass$$function$$1.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:53)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor.restMethodInvoke(QuarkusRestPathTemplateInterceptor.java:39)
+	at io.quarkus.resteasy.runtime.QuarkusRestPathTemplateInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:49)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResource_Subclass.getFundingTypeHistory(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResource_ClientProxy.getFundingTypeHistory(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+2022-09-24 16:32:07,008 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Handling  custom exception of type CareAccountNotFoundException
+2022-09-24 16:32:07,008 ERROR [com.olm.msp.ser.car.cor.res.exc.RestExceptionHandler] (executor-thread-0) Mapped exception of type CareAccountNotFoundException
+2022-09-24 16:32:07,070 ERROR [com.olm.msp.ser.car.cor.sec.aut.AuthorizationExceptionMapper] (executor-thread-0) Custom authorization exception handler invoked: io.quarkus.security.ForbiddenException
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.doApply(RolesAllowedCheck.java:72)
+	at io.quarkus.security.runtime.interceptor.check.RolesAllowedCheck.apply(RolesAllowedCheck.java:55)
+	at io.quarkus.security.runtime.interceptor.SecurityConstrainer.check(SecurityConstrainer.java:32)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:46)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:29)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:41)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:40)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:32)
+	at com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResource_Subclass.getFundingTypeHistory(Unknown Source)
+	at com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResource_ClientProxy.getFundingTypeHistory(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:555)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.167 s - in com.olmgroup.msp.service.careaccount.models.careaccounthistory.CareAccountHistoryResourceTest
+2022-09-24 16:32:07,195 INFO  [org.ecl.jet.uti.log] (main) Logging initialized @103619ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-09-24 16:32:07,298 INFO  [io.quarkus] (main) careaccount-service stopped in 0.218s
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 64, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ careaccount ---
+[INFO] Building jar: E:\Workspace\ms\careaccount\target\careaccount-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- quarkus-maven-plugin:2.11.2.Final:build (default) @ careaccount ---
+[WARNING] [io.quarkus.resteasy.mutiny.deployment.ResteasyMutinyProcessor] The quarkus-resteasy-mutiny extension is deprecated. Switch to RESTEasy Reactive instead.
+This extension adds support for Uni and Multi to RESTEasy 'classic', without using the reactive execution model, as RESTEasy classic does not use it. To properly integrate Mutiny and RESTEasy, use RESTEasy Reactive. See https://quarkus.io/guides/getting-started-reactive for detailed instructions
+[INFO] [io.quarkus.elytron.security.properties.deployment.ElytronPropertiesProcessor] Configuring from MPRealmConfig
+[INFO] [io.quarkus.smallrye-reactive-messaging.deployment.processor] Configuring the channel 'authorisationEventsChannel' to be managed by the connector 'smallrye-rabbitmq'
+[INFO] Checking for existing resources in: E:\Workspace\ms\careaccount\src\main\kubernetes.
+[INFO] [org.hibernate.Version] HHH000412: Hibernate ORM core version 5.6.10.Final
+Apply requests cpu to:careaccount-service
+Apply requests cpu to:careaccount-service
+Apply requests cpu to:careaccount-service
+Apply requests cpu to:careaccount-service
+Apply requests cpu to:careaccount-service
+Apply requests cpu to:careaccount-service
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 5243ms
+[INFO] 
+[INFO] --- maven-failsafe-plugin:3.0.0-M7:integration-test (default) @ careaccount ---
+[INFO] 
+[INFO] --- maven-failsafe-plugin:3.0.0-M7:verify (default) @ careaccount ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ careaccount ---
+[INFO] Installing E:\Workspace\ms\careaccount\target\careaccount-0.0.1-SNAPSHOT.jar to C:\Users\Tanveer\.m2\repository\com\olmgroup\msp\service\careaccount\0.0.1-SNAPSHOT\careaccount-0.0.1-SNAPSHOT.jar
+[INFO] Installing E:\Workspace\ms\careaccount\pom.xml to C:\Users\Tanveer\.m2\repository\com\olmgroup\msp\service\careaccount\0.0.1-SNAPSHOT\careaccount-0.0.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:11 min
+[INFO] Finished at: 2022-09-24T16:32:14+01:00
+[INFO] ------------------------------------------------------------------------

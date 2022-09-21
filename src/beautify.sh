@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ########### Show Logo & Banner ###############
-logoViewer() {
+beautifyLogoViewer() {
   ## Title Icon ######################
 	echo -e "$Green"
 	cat "$root_path/ascii/logo.ascii"
@@ -9,27 +9,27 @@ logoViewer() {
 
 
 	######## Banner #####################
-  LOGO_VIEW="$(cat "${VAR_FILE_PATH}"/logo.txt)"
-  loadBanner
+	LOGO_VIEW=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT logo_view FROM runtime_vars")
+  beautifyLoadBanner
 
   if [ -z "$LOGO_VIEW" ]; then
-    toggleBanner
+    beautifyToggleBanner
   fi
 
-	if [ "$LOGO_VIEW" == true ]; then
+	if [ "$LOGO_VIEW" == "true" ]; then
 	  bannerPrinter "$BANNER_FILE"
 	fi
 }
 
 ############# Read and set banner ######################
-loadBanner() {
+beautifyLoadBanner() {
   BANNER_FILE="$(cat "${VAR_FILE_PATH}"/banner.txt)"
   if [ -z "$BANNER_FILE" ]; then
-    bannerUpdate "cat/cat_moon"
+    beautifyBannerUpdate "cat/cat_moon"
   fi
 }
 
-bannerUpdate() {
+beautifyBannerUpdate() {
   TEMP_VAL=$1
   if [ -n "$BANNER_FILE" ]; then
     echo "This can be confusing. to keep it simple, enter the relative path. e.g., if a file is in ${RED}/ascii/file.ascii${NC} enter ${RED}file${NC}"
@@ -51,15 +51,15 @@ bannerPrinter() {
 
 
 ############### ToggleBanner ##################
-toggleBanner() {
-	if [ "$LOGO_VIEW" == true ]; then
+beautifyToggleBanner() {
+	if [ "$LOGO_VIEW" == "true" ]; then
 		echo "Icon ${RED}Disabled${NC}"
-		LOGO_VIEW=false;
+		LOGO_VIEW="false";
 	else
 		echo "Icon ${GREEN}Enabled${NC}"
-		LOGO_VIEW=true;
+		LOGO_VIEW="true";
 	fi
-	echo "$LOGO_VIEW" > "${VAR_FILE_PATH}/logo.txt"
+	"$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE runtime_vars SET logo_view='${LOGO_VIEW}' WHERE id=1;"
 }
 
 ######## Dummy decorator for "Press Enter" ########
@@ -70,7 +70,7 @@ enterToContinue(){
 }
 
 ########## Highlight Color for Previous Picked Option #########
-highlightOption(){
+beautifyHighlightOption(){
   NON_HIGHLIGHT_COLOR="${RED}"
   HIGHLIGHT_COLOR="${RED_HIGHLIGHT}"
   if [ "$TEMP_OPT" == "$1" ]; then
@@ -82,13 +82,13 @@ highlightOption(){
 }
 
 ######### Beautify Option Group title #################
-optionGroupTitlePrint() {
+beautifyOptionGroupTitlePrint() {
   echo "${PURPLE} $1 ${NC}"
 }
 
 ########## Beautify and Print Option #########
-optionPrint() {
-  highlightOption "$1"
+beautifyOptionPrint() {
+  beautifyHighlightOption "$1"
   printf "%s%4s.%s %s %s%s%s " "${OPT_COLOR}" "${1}" "${NC}" "${2}" "${BGREEN}" "${3}" "${NC}"
   if [[ -n "$5" ]]; then
      echo -n "Current: ${BYELLOW}${5}${NC}"
