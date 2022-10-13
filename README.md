@@ -1,3 +1,4 @@
+E:\Workspace\ms\purchaseoption
 # Dev Pilot 4
 Shell commands used for Day to day Software Development. 
 The ultimate goal is to automate complete development lifecycle of software development with as much automation as possible
@@ -6,7 +7,7 @@ This Project is part of **[CLUI](https://github.com/tanvoid0/clui) Project**, wh
 While developing the project, felt the urge to learn advanced **Shell based commands** to fulfill the goal of the project.
 So, this is a draft (but not limited to) and lightweight cli version.
 
-Currently, support limited to **spring boot** projects only.
+Currently, support limited to **spring boot and npm** projects only.
 
 
 ![Dev Pilot](./assets/ui.png)
@@ -29,6 +30,7 @@ Currently, support limited to **spring boot** projects only.
 ### Upcoming features
 * Implementing RabbitMQ deployment
 * Initialize Dummy database
+* systempropertiesadvanced (to open env variable in one tap)
 
 ## Commands (not fully updated)
 ## Maven Commands

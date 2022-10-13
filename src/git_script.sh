@@ -1,28 +1,28 @@
 #!/bin/bash
 
 ########## Git Fetch ###########
-gitFetch() {
+gitScriptFetch() {
   commandPrint "git fetch"
 }
 
 ########### Git Add All ###############
-gitAddAll() {
+gitScriptAddAll() {
   commandPrint "git add ."
 }
 
 ########## Git add src/ folder ###############
-gitAddSrc() {
+gitScriptAddSrc() {
   commandPrint "git add src/"
 }
 
 ############## Git status ###############
-gitStatus() {
+gitScriptStatus() {
   git status
 }
 
 
 ##################### Git Commit ###################
-gitCommit() {
+gitScriptCommit() {
   while [ -z "${commitFeature}" ]; do
     read -r -n "Enter feature name (e.g., FC-299): " commitFeature
   done
@@ -35,23 +35,23 @@ gitCommit() {
 
 
 ############### Git amend commit ######################
-gitCommitAmend() {
+gitScriptCommitAmend() {
   commandPrint "git commit --amend --no-edit"
 }
 
 
 ############# Git push #############################
-gitPush() {
+gitScriptPush() {
   commandPrint "git push"
 }
 
 ###################### Git push Force with lease ############
-gitPushForceWithLease() {
+gitScriptPushForceWithLease() {
   commandPrint "git push --force-with-lease"
 }
 
 ################## Git Squash ########################
-gitSquash() {
+gitScriptSquash() {
   while [ -z "${nums}" ]; do
     read -r -n "Please enter number of commits to squash: " nums
   done
@@ -59,6 +59,6 @@ gitSquash() {
 }
 
 ##################### Git rebase #######################
-gitRebase() {
+gitScriptRebase() {
   commandPrint "git rebase origin $1"
 }

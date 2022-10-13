@@ -1,23 +1,25 @@
 #!/bin/bash
 
 ############ Maven Test ##############################
-mavenTest() {
+mavenScriptTest() {
   commandPrintAndSave "mvn test" "validate"
 }
 
 ################ Maven Clean Install #################
-mavenCleanInstall() {
+mavenScriptCleanInstall() {
 #  commandPrint "mvn clean install"
-  commandPrintAndSave "mvn clean install" "validate" "docker daemon is not running."
+  commandPrintAndSave "mvn clean install $1" "validate" "docker daemon is not running."
 }
 
-prepForAutoPilotMaven() {
-  autoPilotLiquibasePrep
+mavenScriptCleanInstallWithoutTests() {
+  mavenScriptCleanInstall "-DskipTests=true"
 }
 
 autoPilotMavenSequence() {
-  prepForAutoPilotMaven
+  liquibaseScriptAutoPilotInit
 
   autoPilotFlyMode 'm1'
   autoPilotFlyMode 'm2'
+
+  liquibaseScriptAutoPilot
 }

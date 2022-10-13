@@ -1,1 +1,4 @@
 .idea
+db.sqlite
+*.sqlite
+output.txt

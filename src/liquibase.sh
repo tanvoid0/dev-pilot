@@ -2,6 +2,7 @@
 old=(
 	"varchar(255)"
 	"VARCHAR(255)"
+	"varchar(255 BYTE)"
 	"TEXT"
 	"INTEGER"
 	"INT4"
@@ -24,6 +25,7 @@ old=(
 	)
 
 new=(
+	"type.varchar"
 	"type.varchar"
 	"type.varchar"
 	"type.clob"
@@ -50,10 +52,21 @@ new=(
 ## TODO: Generate Database for initial database creation #####
 # param1: namespace
 # param2: service-name
-generateLocalDatabaseQuery() {
-  echo "create database \"$2-$1\" template template0 encoding UTF8 lc_collate 'en_GB.UTF-8' lc_ctype 'en_GB.UTF-8';"
+liquibaseScriptExecPsql() {
+  psql -c "$1"
 }
 
+liquibaseScriptGenerateLocalDatabaseQuery() {
+  liquibaseScriptExecPsql "create database \"$2-$1\" template template0 encoding UTF8 lc_collate 'en_GB.UTF-8' lc_ctype 'en_GB.UTF-8';"
+}
+
+liquibaseScriptRecreateLocalDB() {
+  liquibaseScriptExecPsql "drop database \"$2-$1\";"
+  liquibaseScriptExecPsql "drop database \"$2_diff\";"
+  liquibaseScriptExecPsql "drop database \"$2_test\";"
+
+  liquibaseScriptGenerateLocalDatabaseQuery "$1" "$2"
+}
 
 ## Common vars to use across functions
 db_changelog_path=""
@@ -61,15 +74,10 @@ liquibase_filename=""
 liquibase_filepath=""
 liquibase_new_filepath=""
 
-################ Validate Liquibase Changelog #######################
-validateLiquibase() {
-  commandPrintAndSave "mvn -PLIQUIBASE_VERIFY test" "validate"
-}
-
 ################## Extension of `prepareLiquibase()` #################################
-processLiquibase() {
+liquibaseScriptProcess() {
   if [ -z "$liquibase_filename" ]; then
-    liquibaseSetFilename
+    liquibaseScriptSetFilename
   fi
 
   ## Copy Generated Liquibase file to resources ###
@@ -96,17 +104,24 @@ processLiquibase() {
 }
 
 ############## Prepare Liquibase Database ##################
-prepareLiquibase() {
-  prepareLiquibaseForInitialTest
-  prepareLiquibaseForDiff
+liquibaseScriptPrepareLiquibase() {
+  liquibaseScriptPrep
+  liquibaseScriptUpdate
 }
 
-prepareLiquibaseForDiff() {
+########### Prepare for Diff ################################
+liquibaseScriptPrep() {
+  commandPrintAndSave "mvn -PLIQUIBASE_PREPARE_FOR_DIFF test" "validate"
+}
+
+################### Create Diff #############################
+liquibaseScriptUpdate() {
   commandPrintAndSave "mvn liquibase:update liquibase:diff" "validate"
 }
 
-prepareLiquibaseForInitialTest() {
-  commandPrintAndSave "mvn -PLIQUIBASE_PREPARE_FOR_DIFF test" "validate"
+################ Validate Liquibase Changelog ###############
+liquibaseScriptVerify() {
+  commandPrintAndSave "mvn -PLIQUIBASE_VERIFY test" "validate"
 }
 
 liquibaseScriptReset() {
@@ -117,7 +132,7 @@ liquibaseScriptReset() {
 
 ################### New Liquibase Change File Name ###########
 # liquibase_new_filepath - The newly generated liquibase changes file path with new types
-liquibaseSetFilename() {
+liquibaseScriptSetFilename() {
   liquibase_filename=""
   while [ -z "$liquibase_filename" ]; do
       read -r -p "Enter new liquibase file title: " liquibase_filename
@@ -129,24 +144,24 @@ liquibaseSetFilename() {
 # db_changelog_path - The database changelog directory path in the source directory of the project
 # liquibase_filepath - generated file path of liquibase
 # master_liquibase - The liquibase-changelog-master file path
-initLiquibasePaths() {
+liquibaseScriptInit() {
   db_changelog_path="$PROJECT_PATH/src/main/resources/db/changelog"
   liquibase_filepath="$PROJECT_PATH/target/liquibase-diff-changelog.yml"
   master_liquibase="$db_changelog_path/liquibase-changelog-master.yml"
 }
 
-autoPilotLiquibasePrep() {
+liquibaseScriptAutoPilotInit() {
   read -r -p "Do you need liquibase for this flight? (y/n): " PILOT_LIQUIBASE_REQUIRED
   if [ "$PILOT_LIQUIBASE_REQUIRED" == "y" ] || [ "$PILOT_LIQUIBASE_REQUIRED" == "Y" ]
   then
     PILOT_LIQUIBASE_REQUIRED=true
-    liquibaseSetFilename
+    liquibaseScriptSetFilename
   else
     PILOT_LIQUIBASE_REQUIRED=false
   fi
 }
 
-autoPilotLiquibase() {
+liquibaseScriptAutoPilot() {
   if [ "$PILOT_LIQUIBASE_REQUIRED" == true ]; then
     autoPilotFlyMode 'l1'
     autoPilotFlyMode 'l2'
