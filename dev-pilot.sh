@@ -106,9 +106,10 @@ optionOutput() {
   beautifyOptionGroupTitlePrint "Configs"
   beautifyOptionPrint "x" "Toggle" "Banner"
   beautifyOptionPrint "s1" "Update" "Project Path." false "${PROJECT_PATH}"
-  beautifyOptionPrint "s2" "Update" "Kubernetes Namespace." false "${NAMESPACE}"
-  beautifyOptionPrint "s3" "Update" "Banner Path." false "${BANNER_FILE}"
-  beautifyOptionPrint "s4" "Update" "Docker Pre Tag" true "${DOCKER_PRE_TAG}"
+  beautifyOptionPrint "s2" "Update" "Project Name." false "${PROJECT_NAME}"
+  beautifyOptionPrint "s3" "Update" "Kubernetes Namespace." false "${NAMESPACE}"
+  beautifyOptionPrint "s4" "Update" "Banner Path." false "${BANNER_FILE}"
+  beautifyOptionPrint "s5" "Update" "Docker Pre Tag" true "${DOCKER_PRE_TAG}"
 
   ########### End of commands ###################
   echo "Press ${BRED}Ctrl+C${NC} to quit..."
@@ -149,10 +150,10 @@ optionProcess() {
   'n8') npmScriptRunBuild ;;
 
     ######## Liquibase Commands ############
-  'l1') prepareLiquibaseForInitialTest ;;
-  'l2') prepareLiquibaseForDiff ;;
+  'l1') liquibaseScriptPrep ;;
+  'l2') liquibaseScriptUpdate ;;
   'l3') liquibaseScriptProcess ;;
-  'l4') validateLiquibase ;;
+  'l4') liquibaseScriptVerify ;;
   'l5') liquibaseScriptRecreateLocalDB "$NAMESPACE" "$PROJECT_NAME";;
 
     ######## Docker Commands ###############
@@ -193,9 +194,10 @@ optionProcess() {
 
     ####### Settings & Configs #############
   'x') beautifyToggleBanner ;;
-  's1') projectPathSetup 1 ;;
-  's2') namespaceSetup 1 ;;
-  's3') bannerUpdate ;;
+  's1') projectPathUpdateForce ;;
+  's2') projectNameUpdateForce ;;
+  's3') namespaceSetup 1 ;;
+  's4') bannerUpdate ;;
 
     ####### Invalid option #############
   *) echo "Invalid command... Try again" ;;
@@ -204,32 +206,38 @@ optionProcess() {
 
 # Initial Setup
 setup() {
-  dbInit
   #createVars
+  dbInit
+  kubeScriptPreTagSetter
   projectPathSetup
   namespaceSetup # inside kube_script
-  #liquibaseScriptInit
+  utilScriptGreeting
+
+  liquibaseScriptInit
 }
 
 resetVars() {
   liquibaseScriptReset
 }
 
+runPilot() {
+  while true; do
+    ## Initiation
+    # resetVars
+    beautifyLogoViewer # lOGO & Banner Viewer
+
+    ## Process
+    optionOutput         # Option Viewer
+    optionInput          # Option Picker
+    optionProcess "$opt" # And Command Execute
+
+    ## End Process
+    enterToContinue # Enter to Continue Template
+  done
+}
+
 ######## Main Function ##########
 
 setup
 
-while true; do
-  ## Initiation
-  # resetVars
-   beautifyLogoViewer # lOGO & Banner Viewer
-  # utilScriptGreeting
-  
-  ## Process
-  optionOutput         # Option Viewer
-  optionInput          # Option Picker
-  optionProcess "$opt" # And Command Execute
-
-  ## End Process
-  enterToContinue # Enter to Continue Template
-done
+runPilot

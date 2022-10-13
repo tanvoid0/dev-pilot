@@ -113,6 +113,30 @@ kubeScriptCreateNamespace() {
   commandPrint "kubectl create ns $input"
 }
 
+####### Validate and set Pre Image Tag ####
+kubeScriptPreTagSetter() {
+  IMAGE_PRE_TAG=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT docker_pre_tag FROM runtime_vars");
+  if [ -z "$IMAGE_PRE_TAG" ]; then
+    read -r -p "Do you want to set Kubernetes image pre tag? (Y/n)" input
+    if [ "$input" = "n" ]; then
+      return
+    fi
+    kubeScripPreTagUpdate
+  fi
+  echo "IMAGE PRE TAG: $IMAGE_PRE_TAG"
+}
+
+### Force update Docker PreTag ####
+# eu.gcr.io/olm-rd/efm
+kubeScripPreTagUpdate() {
+  input=""
+  while [ -z "$input" ]; do
+    read -r -p "Enter image pre tag: " input
+  done
+  "$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE runtime_vars SET docker_pre_tag='$input' WHERE id=1"
+  IMAGE_PRE_TAG="$input"
+}
+
 ############# Read and Set Namespace ################
 namespaceSetup() {
   ## Check namespace from runtime vars in db

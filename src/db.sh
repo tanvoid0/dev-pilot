@@ -46,8 +46,17 @@ dbUpdate() {
   dbExecQuery "UPDATE $1 SET $2 WHERE $3"
 }
 
+dbMockCopier() {
+  if [ -f "$DB_NAME" ]; then
+    return
+  else
+    cp "$root_path/db.sqlite.example" "$DB_NAME"
+  fi
+}
+
 dbInit() {
 #  dbCreateTableIfDoesntExist
 #  dbDropAndCreateTable
-  dbView "project" "*"
+#  dbView "project" "*"
+  dbMockCopier
 }

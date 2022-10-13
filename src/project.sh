@@ -3,30 +3,71 @@
 ########## Validate Maven Project #############
 PROJECT_PATH_VALIDATED=false
 
-########## Read and Set Project Path #################
+######## Initial Check for existing Project Path #######
 projectPathSetup() {
-  ## Find Project From local DB
-  PROJECT_PATH=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT project_path FROM runtime_vars")
-  projectChecker "$PROJECT_PATH"
+  ## Check for project in runtime_vars table ####
+  projectPathVarChecker
+  projectChecker $PROJECT_PATH
+}
 
+
+
+########## Read and Set Project Path #################
+projectPathUpdate() {
   ## Read Project Path if No Path exists
   while [[ -z "$PROJECT_PATH" ]]; do
     read -r -p "Enter project path (maven/npm) projects only): " PROJECT_PATH
     projectChecker "$PROJECT_PATH"
   done
+
   "$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE runtime_vars SET project_path='$PROJECT_PATH' WHERE id=1;"
   echo "PROJECT_PATH: ${GREEN}$PROJECT_PATH${NC}"
+  "$SQLITE_EXEC_PATH" "$DB_NAME" "INSERT OR REPLACE INTO project (id, project_name, project_path) VALUES ((SELECT id FROM project WHERE project_path='$PROJECT_PATH'), '$PROJECT_NAME', '$PROJECT_PATH');"
+}
+
+projectNameUpdate() {
   PROJECT_NAME="${PWD##*/}"
-  read -r -p "Do you want to keep the project name $PROJECT_NAME? (Y/n):" PROJECT_NAME_QUERY
+  read -r -p "Do you want to keep the project name ${BLUE}'$PROJECT_NAME'${NC}? (Y/n):" PROJECT_NAME_QUERY
   if [ "$PROJECT_NAME_QUERY" = "n" ]; then
+    PROJECT_NAME_QUERY=""
     while [ -z "$PROJECT_NAME_QUERY" ]; do
       read -r -p "Enter project name: " PROJECT_NAME_QUERY
     done
     PROJECT_NAME=$PROJECT_NAME_QUERY
+    "$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE project SET project_name='$PROJECT_NAME' WHERE project_path='$PROJECT_PATH' ;"
   fi
+}
 
-  "$SQLITE_EXEC_PATH" "$DB_NAME" "INSERT OR REPLACE INTO project (id, project_path, project_name) VALUES ((SELECT id FROM project WHERE project_path='$PROJECT_PATH'), '$PROJECT_NAME', '$PROJECT_PATH');"
-  "$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE runtime_vars SET project_path='$PROJECT_PATH' WHERE id=1"
+##### Find and set Project path from DB ##########
+projectPathVarChecker() {
+  ## Find Project From local DB
+  PROJECT_PATH=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT project_path FROM runtime_vars")
+  if [ -z "$PROJECT_PATH" ]; then
+      projectGetOrUpdateProjectVars
+  fi
+  PROJECT_NAME=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT project_name FROM project WHERE project_path='$PROJECT_PATH'");
+  echo "Project Name: $PROJECT_NAME"
+}
+
+### Find and get Project values from Project Table #####
+projectGetOrUpdateProjectVars() {
+  TEMP_VAL=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT * FROM project WHERE project_path='$PROJECT_PATH'");
+  if [[ -z "$TEMP_VAL" ]]; then
+    projectPathUpdate
+    projectNameUpdateForce
+  fi
+  echo "Project path $PROJECT_PATH"
+}
+
+### ForceUpdate project path ###
+projectPathUpdateForce() {
+  PROJECT_PATH=""
+  projectPathUpdate
+}
+
+projectNameUpdateForce() {
+  PROJECT_NAME=""
+  projectNameUpdate
 }
 
 projectChecker() {
