@@ -3,60 +3,58 @@
 ########### Show Logo & Banner ###############
 beautifyLogoViewer() {
   ## Title Icon ######################
-	echo -e "$Green"
-	cat "$root_path/ascii/logo.ascii"
-	echo -e "$NC"
 
-
-	######## Banner #####################
-	LOGO_VIEW=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT logo_view FROM runtime_vars")
+  beautifyLoadLogo
   beautifyLoadBanner
-
-  if [ -z "$LOGO_VIEW" ]; then
-    beautifyToggleBanner
-  fi
-
-	if [ "$LOGO_VIEW" == "true" ]; then
-	  bannerPrinter "$BANNER_FILE"
-	fi
 }
 
-############# Read and set banner ######################
+############# Read and set Logo #########################
+beautifyLoadLogo() {
+  	LOGO_VIEW=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT logo_view FROM runtime_vars")
+  	if [ "$LOGO_VIEW" == "true" ]; then
+    	  bannerPrinter "logo" "$GREEN"
+    fi
+}
+
+############## Read and set banner ######################
 beautifyLoadBanner() {
-  BANNER_FILE="$(cat "${VAR_FILE_PATH}"/banner.txt)"
-  if [ -z "$BANNER_FILE" ]; then
-    beautifyBannerUpdate "cat/cat_moon"
-  fi
+  BANNER_PATH=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT banner_path FROM runtime_vars")
+  bannerPrinter $BANNER_PATH "$RED"
 }
 
 beautifyBannerUpdate() {
-  TEMP_VAL=$1
-  if [ -n "$BANNER_FILE" ]; then
-    echo "This can be confusing. to keep it simple, enter the relative path. e.g., if a file is in ${RED}/ascii/file.ascii${NC} enter ${RED}file${NC}"
-  fi
-  while [ -z "$TEMP_VAL" ]; do
-      read -r -p "Enter relative path: " TEMP_VAL
+  input=""
+  while [ -z "$input" ]; do
+      read -r -p "Enter relative path to ascii folder: " input
+      banner_file_location="${root_path}/ascii/${input}.ascii"
+      if [ -f "$banner_file_location" ]; then
+        BANNER_PATH="$input"
+        "$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE runtime_vars SET banner_path='$input' WHERE id=1"
+        echo "Banner Relative Path set to: ${BRED}${input}${NC}"
+        break;
+      else
+        echo -e "${BRED}Invalid relative file path...${NC} the file ${BYELLOW}'${banner_file_location}${NC} does not exist. Please try again.\n"
+        input=""
+      fi
   done
-  BANNER_FILE=$TEMP_VAL
-
-  echo "$BANNER_FILE" >"${VAR_FILE_PATH}/banner.txt"
+  BANNER_PATH=$TEMP_VAL
 }
 
-####### Show slayer ##############
+####### Show Banner ##############
 bannerPrinter() {
-  echo -e "$2"
-  cat "$root_path/ascii/$1.ascii"
-  echo -e "$NC"
+  echo -e "${2}"
+  cat "${root_path}/ascii/${1}.ascii"
+  echo -e "${NC}"
 }
 
 
 ############### ToggleBanner ##################
-beautifyToggleBanner() {
+beautifyToggleLogo() {
 	if [ "$LOGO_VIEW" == "true" ]; then
-		echo "Icon ${RED}Disabled${NC}"
+		echo "Logo ${RED}Disabled${NC}"
 		LOGO_VIEW="false";
 	else
-		echo "Icon ${GREEN}Enabled${NC}"
+		echo "Logo ${GREEN}Enabled${NC}"
 		LOGO_VIEW="true";
 	fi
 	"$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE runtime_vars SET logo_view='${LOGO_VIEW}' WHERE id=1;"
@@ -99,40 +97,6 @@ beautifyOptionPrint() {
   fi
 }
 
-
-############ Beautify and print Command #########
-commandPrint() {
-  echo "Running command: ${BYELLOW}$1${NC}"
-  printf "\n"
-  eval "$1"
-}
-
-commandPrintAndSave() {
-  notifySend "Command Running" "$1"
-  commandPrint "$1" | tee "$OUTPUT_FILE"
-
-  if [ "$2" == "validate" ]; then
-    cmdOutputResponseValidator "$3" "$4"
-  fi
-}
-
-
-cmdOutputResponseValidator() {
-  OUTPUT="$(cat "$OUTPUT_FILE")"
-  SUCCESS_STRING="$1"
-  FAILED_STRING="$2"
-  if [ -z "$SUCCESS_STRING" ]; then
-    SUCCESS_STRING="BUILD SUCCESS"
-  fi
-
-  if [ -z "$FAILED_STRING" ]; then
-    FAILED_STRING="BUILD FAILED"
-  fi
-
-  OUTPUT_TRIM="${OUTPUT: -1500}"
-  case "$OUTPUT_TRIM" in
-    *"$SUCCESS_STRING"*) bannerPrinter "jet_group" "${GREEN}" ; echo "${BGREEN}Operation completed Successfully${NC}..."; OUTPUT_RESPONSE=true; notifySend "Success" "Command finished successfully" ;;
-    *"$FAILED_STRING"*) bannerPrint "plane_crash" "${RED}" ; echo "${BRED}Operation failed${NC}..."; OUTPUT_RESPONSE=false; notifySend "Failure" "Command failed." error ;;
-    *) echo "Not sure... $OUTPUT_TRIM"; OUTPUT_RESPONSE="";;
-  esac
+beautifyClearScreen() {
+  printf "\033c"
 }

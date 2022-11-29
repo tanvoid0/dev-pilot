@@ -15,11 +15,9 @@ mavenScriptCleanInstallWithoutTests() {
   mavenScriptCleanInstall "-DskipTests=true"
 }
 
-autoPilotMavenSequence() {
-  liquibaseScriptAutoPilotInit
-
-  autoPilotFlyMode 'm1'
+mavenAutoPilotSequence() {
+#  liquibaseScriptAutoPilotInit
   autoPilotFlyMode 'm2'
-
-  liquibaseScriptAutoPilot
+  autoPilotFlyMode 'm3'
+#  liquibaseScriptAutoPilot
 }

@@ -6,7 +6,8 @@ autoPilot() {
   OUTPUT_RESPONSE=true
 
   if [ "$PROJECT_TYPE" == "maven" ]; then
-    autoPilotMaven
+    liquibaseScriptAutoPilotSequence
+    mavenAutoPilotSequence
   elif [ "$PROJECT_TYPE" == "npm" ]; then
     autoPilotNpm
   else
@@ -23,7 +24,7 @@ autoPilotFlyMode() {
   fi
 
   if [ "$OUTPUT_RESPONSE" == true ]; then
-    optionProcess "$1"
+    pilotNavigation "$1"
   fi
 }
 

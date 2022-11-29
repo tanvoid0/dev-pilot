@@ -21,7 +21,7 @@ projectPathUpdate() {
   done
 
   "$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE runtime_vars SET project_path='$PROJECT_PATH' WHERE id=1;"
-  echo "PROJECT_PATH: ${GREEN}$PROJECT_PATH${NC}"
+  echo -e "PROJECT_PATH: ${BRED}$PROJECT_PATH${NC}\n"
   "$SQLITE_EXEC_PATH" "$DB_NAME" "INSERT OR REPLACE INTO project (id, project_name, project_path) VALUES ((SELECT id FROM project WHERE project_path='$PROJECT_PATH'), '$PROJECT_NAME', '$PROJECT_PATH');"
 }
 
@@ -34,8 +34,8 @@ projectNameUpdate() {
       read -r -p "Enter project name: " PROJECT_NAME_QUERY
     done
     PROJECT_NAME=$PROJECT_NAME_QUERY
-    "$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE project SET project_name='$PROJECT_NAME' WHERE project_path='$PROJECT_PATH' ;"
   fi
+  "$SQLITE_EXEC_PATH" "$DB_NAME" "UPDATE project SET project_name='$PROJECT_NAME' WHERE project_path='$PROJECT_PATH' ;"
 }
 
 ##### Find and set Project path from DB ##########
@@ -46,7 +46,7 @@ projectPathVarChecker() {
       projectGetOrUpdateProjectVars
   fi
   PROJECT_NAME=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT project_name FROM project WHERE project_path='$PROJECT_PATH'");
-  echo "Project Name: $PROJECT_NAME"
+  echo -e "Project Name: ${BRED}$PROJECT_NAME${NC}\n"
 }
 
 ### Find and get Project values from Project Table #####
@@ -56,7 +56,6 @@ projectGetOrUpdateProjectVars() {
     projectPathUpdate
     projectNameUpdateForce
   fi
-  echo "Project path $PROJECT_PATH"
 }
 
 ### ForceUpdate project path ###
@@ -79,12 +78,12 @@ projectChecker() {
   package_file_location="${1}/package.json"
   if [ -f "$pom_file_location" ]; then
     PROJECT_TYPE="maven"
-    echo "Maven Project"
+    echo "${BRED}Maven Project${NC}"
   elif [ -f "$package_file_location" ]; then
     PROJECT_TYPE="npm"
-    echo "NPM Project"
+    echo "${BRED}NPM Project${NC}"
   else
-    echo "Invalid Project path. only maven and npm projects are supported"
+    echo -e "${BYELLOW}Invalid Project path${NC}. only maven and npm projects are supported\n"
     PROJECT_PATH=""
     return
   fi

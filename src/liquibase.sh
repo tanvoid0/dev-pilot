@@ -161,7 +161,8 @@ liquibaseScriptAutoPilotInit() {
   fi
 }
 
-liquibaseScriptAutoPilot() {
+liquibaseScriptAutoPilotSequence() {
+  liquibaseScriptAutoPilotInit
   if [ "$PILOT_LIQUIBASE_REQUIRED" == true ]; then
     autoPilotFlyMode 'l1'
     autoPilotFlyMode 'l2'

@@ -12,9 +12,9 @@ utilConvertBase64ToString() {
 
 ######## Core Function to convert between strings and base64s #########
 utilBase64Conversion() {
-  optionPrint "1" "String to" "Base64"
-  optionPrint "2" "Base64 to" "String"
-  optionPrint "0" "Exit Base64 conversion Utility"
+  beautifyOptionPrint "1" "String to" "Base64"
+  beautifyOptionPrint "2" "Base64 to" "String"
+  beautifyOptionPrint "0" "Exit Base64 conversion Utility"
 
   read -r -p "Enter your choice: " baseOpt
   baseInput=""

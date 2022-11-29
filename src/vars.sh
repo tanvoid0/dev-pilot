@@ -5,14 +5,12 @@
 TEST_VAR="Hello World"
 OUTPUT_FILE="${root_path}/output.txt"                     # Output saved to file
 OUTPUT_RESPONSE=""                                        # Output Response of a command
-BANNER_FILE="${root_path}/ascii/cat/cat_moon.ascii"       # Output path of banner
 TEMP_OPT=""                                               # Option picked in main menu, used as automation bookmark
 VAR_FILE_PATH="${root_path}/vars"                         # Cache variables
 PROJECT_TYPE=""                                           # Type of Project
 NAMESPACE=""                                              # Namespace
 PROJECT_PATH=""                                           # Project Path
 LOGO_VIEW=""                                              # Logo View Flag (boolean)
-NOTIFICATION_SENDER=false
 
 ## Autopilot vars
 PILOT_LIQUIBASE_REQUIRED=""                               # defaults to false

@@ -15,6 +15,7 @@ loadScripts "db"
 
 loadScripts "auto_pilot"
 loadScripts "beautify"
+loadScripts "cmd_processor"
 loadScripts "docker_script"
 loadScripts "files"
 loadScripts "gcloud_script"
@@ -28,6 +29,7 @@ loadScripts "notify"
 loadScripts "project"
 loadScripts "os_script"
 loadScripts "util_script"
+loadScripts "util/util_base_conversion"
 
 ################# View List of command options ################
 optionOutput() {
@@ -104,12 +106,14 @@ optionOutput() {
 
   ############ Settings Commands ################
   beautifyOptionGroupTitlePrint "Configs"
-  beautifyOptionPrint "x" "Toggle" "Banner"
+  beautifyOptionPrint "tl" "Toggle" "Logo" false "${LOGO_VIEW}"
+  beautifyOptionPrint "tn" "Toggle" "Notification" false "${notification}"
   beautifyOptionPrint "s1" "Update" "Project Path." false "${PROJECT_PATH}"
   beautifyOptionPrint "s2" "Update" "Project Name." false "${PROJECT_NAME}"
   beautifyOptionPrint "s3" "Update" "Kubernetes Namespace." false "${NAMESPACE}"
-  beautifyOptionPrint "s4" "Update" "Banner Path." false "${BANNER_FILE}"
-  beautifyOptionPrint "s5" "Update" "Docker Pre Tag" true "${DOCKER_PRE_TAG}"
+  beautifyOptionPrint "s4" "Update" "Banner" false "${BANNER_PATH}"
+  beautifyOptionPrint "s5" "Update" "Docker Pre Tag" false "${DOCKER_PRE_TAG}"
+  beautifyOptionPrint "sr" "Update" "RabbitMQ Path" true "${RABBITMQ_PATH}"
 
   ########### End of commands ###################
   echo "Press ${BRED}Ctrl+C${NC} to quit..."
@@ -124,7 +128,7 @@ optionInput() {
 }
 
 ############## Option Process ##################
-optionProcess() {
+pilotNavigation() {
   # shellcheck disable=SC2034
   TEMP_OPT=$1 # Used to highlight option later
 
@@ -134,7 +138,7 @@ optionProcess() {
   case $TEMP_OPT in '0') autoPilot ;;
 
     ####### Maven Commands ################
-  'm0') autoPilotMavenSequence ;;
+  'm0') mavenAutoPilotSequence ;;
   'm1') mavenScriptCleanInstallWithoutTests ;;
   'm2') mavenScriptTest ;;
   'm3') mavenScriptCleanInstall ;;
@@ -161,11 +165,12 @@ optionProcess() {
   'd2') dockerScriptPush "${NAMESPACE}" "${PROJECT_NAME}" ;;
 
     ######## Kubernetes Commands ###########
+  'kr') kubeScriptRunRabbitmq ;;
   'k1') kubeScriptUpScale "${NAMESPACE}" "${PROJECT_NAME}-ms-deployment" ;;
   'k2') kubeScriptDownScale "${NAMESPACE}" "${PROJECT_NAME}-ms-deployment" ;;
   'k3') kubeScriptRestart "${NAMESPACE}" "${PROJECT_NAME}-ms-deployment" ;;
-  'k4') kubeScriptUpScaleBatch "${NAMESPACE}" ;;
-  'k5') kubeScriptDownScale "${NAMESPACE}" ;;
+  'k4') kubeScriptScaleBatch "up" ;;
+  'k5') kubeScriptScaleBatch ;;
   'k6') kubeScriptProxy ;;
   'k7') kubeScriptPortForward ;;
   'k8') kubeScriptPortForward "debug" ;;
@@ -188,56 +193,65 @@ optionProcess() {
   'g10') gitScriptRebase ;;
 
     ################### Utility Commands ##############
-  'u1') base64Conversion ;;
+  'u1') utilBase64Conversion ;;
   'u2') pingUtility ;;
   'c') runCustomCommand ;;
 
     ####### Settings & Configs #############
-  'x') beautifyToggleBanner ;;
+  'tl') beautifyToggleLogo ;;
+  'tn') notifyToggle ;;
   's1') projectPathUpdateForce ;;
   's2') projectNameUpdateForce ;;
-  's3') namespaceSetup 1 ;;
-  's4') bannerUpdate ;;
+  's3') kubeScriptNamespaceSetup 1 ;;
+  's4') beautifyBannerUpdate ;;
+  's5') kubeScripPreTagUpdate ;;
+  'sr') kubeScriptSetRabbitmq ;;
 
     ####### Invalid option #############
   *) echo "Invalid command... Try again" ;;
   esac
 }
 
-# Initial Setup
-setup() {
-  #createVars
+# Initial cockpit drill
+cockpitDrillInit() {
   dbInit
+  notifyInit
+  kubeScriptInit
   kubeScriptPreTagSetter
   projectPathSetup
-  namespaceSetup # inside kube_script
-  utilScriptGreeting
-
+  kubeScriptNamespaceSetup # inside kube_script
   liquibaseScriptInit
+}
+
+flightTakeOffAnnouncement() {
+  utilScriptGreeting
 }
 
 resetVars() {
   liquibaseScriptReset
 }
 
-runPilot() {
+flightTakeOff() {
   while true; do
     ## Initiation
-    # resetVars
+    resetVars
     beautifyLogoViewer # lOGO & Banner Viewer
 
     ## Process
     optionOutput         # Option Viewer
     optionInput          # Option Picker
-    optionProcess "$opt" # And Command Execute
+    pilotNavigation "$opt" # And Command Execute
 
     ## End Process
     enterToContinue # Enter to Continue Template
   done
 }
 
+
 ######## Main Function ##########
 
-setup
+cockpitDrillInit
 
-runPilot
+flightTakeOffAnnouncement
+
+flightTakeOff

@@ -3,7 +3,7 @@
 DB_NAME="${root_path}/db.sqlite"
 SQLITE_EXEC_PATH="${root_path}/src/script/win/sqlite/sqlite3"
 
-#INSERT_INTO_PROJECT="INSERT INTO project (project_path, project_name) VALUES('path', 'name');";
+#INSERT_INTO_PROJECT="INSERT INTO project (project_path, project_name) VALUES ('path', 'name');";
 
 #VIEW_PROJECT="SELECT * FROM project;"
 
@@ -13,9 +13,15 @@ dbExecQuery() {
   "$SQLITE_EXEC_PATH" "$DB_NAME" "$1"
 }
 
-###### Create table if doesn't exist ########
+####### Create table if doesn't exist ########
 #dbCreateTableIfDoesntExist() {
+#  DB_INIT="$SQLITE_EXEC_PATH" "$DB_DB_NAME" "SELECT * FROM runtime_vars;";
 #
+##  echo "DB_INIT VALUE: $DB_INIT";
+#
+#  if [ -z "$DB_INIT" ]; then
+#     "$SQLITE_EXEC_PATH" "$DB_NAME" "$(cat "$root_path/query.sql")":
+#  fi
 #}
 
 #dbDropAndCreateTable() {
@@ -48,13 +54,18 @@ dbUpdate() {
 
 dbMockCopier() {
   if [ -f "$DB_NAME" ]; then
+    FIRST_SETUP=false
     return
   else
-    cp "$root_path/db.sqlite.example" "$DB_NAME"
+    FIRST_SETUP=true
+#    cat > "$DB_NAME"
+#    cp "$root_path/db.sqlite.example" "$DB_NAME"
+    cat "$root_path/query.sql" | "$SQLITE_EXEC_PATH" "$DB_NAME"
   fi
 }
 
 dbInit() {
+#  rm "$root_path/db.sqlite";
 #  dbCreateTableIfDoesntExist
 #  dbDropAndCreateTable
 #  dbView "project" "*"
