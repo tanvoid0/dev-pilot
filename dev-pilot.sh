@@ -39,7 +39,8 @@ optionOutput() {
     beautifyOptionPrint "m0" "AutoPilot" "Maven & Liquibase"
     beautifyOptionPrint "m1" "Maven Clean Install:" "Without tests"
     beautifyOptionPrint "m2" "Maven Test:" "mvn test"
-    beautifyOptionPrint "m3" "Maven Clean Install:" "mvn clean install" true
+    beautifyOptionPrint "m3" "Maven Clean Install:" "mvn clean install"
+    beautifyOptionPrint "m4" "Ascii Doc Generator" "" true
 
     ############ Liquibase Commands #############
     beautifyOptionGroupTitlePrint "Liquibase Actions"
@@ -142,6 +143,7 @@ pilotNavigation() {
   'm1') mavenScriptCleanInstallWithoutTests ;;
   'm2') mavenScriptTest ;;
   'm3') mavenScriptCleanInstall ;;
+  'm4') utilAsciiBuilder ;;
 
     ############## NPM Commands ###############
   'n1') npmScriptRunCI ;;

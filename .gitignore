@@ -3,3 +3,5 @@ db.sqlite
 *.sqlite
 output.txt
 vars/
+helper/java/*/*.adoc
+helper/java/*/*.class

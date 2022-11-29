@@ -95,3 +95,11 @@ utilCountdownPrinter() {
     sleep 1s
   done
 }
+
+utilAsciiBuilder() {
+#  rm "$root_path/helper/java/*.class"
+  cd "$root_path/helper/java/ascii_builder";
+  javac "AsciiBuilder.java";
+  java "AsciiBuilder";
+  cd "$root_path"
+}
