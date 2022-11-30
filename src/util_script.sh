@@ -84,7 +84,7 @@ utilScriptGreeting() {
 
   beautifyLogoViewer
 
-  utilCountdownPrinter "Welcome to ${BGREEN}DevPilot${NC}. Pilot Engage in: " 5
+  utilCountdownPrinter "Welcome to ${BGREEN}DevPilot${NC}. Pilot Engaging in: " "$LOADER_TIMEOUT"
   beautifyClearScreen
 }
 
@@ -101,5 +101,10 @@ utilAsciiBuilder() {
   cd "$root_path/helper/java/ascii_builder";
   javac "AsciiBuilder.java";
   java "AsciiBuilder";
+  mv "$root_path/helper/java/ascii_builder/ascii.adoc" "$root_path/ascii.adoc";
   cd "$root_path"
+}
+
+utilResetCache() {
+  rm "$root_path/db.sqlite"
 }

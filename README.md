@@ -14,6 +14,7 @@ Currently, support limited to **spring boot and npm** projects only.
 
 ### Features
 * Maven
+* NPM
 * Liquibase
 * Docker
 * Kubernetes
@@ -22,15 +23,13 @@ Currently, support limited to **spring boot and npm** projects only.
 * ping
 * Custom Command
 * Cache data (Save Common data e.g., namespace)
-* Kubernetes Port forwarding
 
 ### On Test
 * Autopilot
 
 ### Upcoming features
-* Implementing RabbitMQ deployment
-* Initialize Dummy database
 * systempropertiesadvanced (to open env variable in one tap)
+* switch between projects
 
 ## Commands (not fully updated)
 ## Maven Commands

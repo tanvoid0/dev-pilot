@@ -183,7 +183,7 @@ kubeScriptSetRabbitmq() {
 kubeScriptPreTagSetter() {
   DOCKER_PRE_TAG=$("$SQLITE_EXEC_PATH" "$DB_NAME" "SELECT docker_pre_tag FROM runtime_vars");
   if [ -z "$DOCKER_PRE_TAG" ]; then
-    read -r -p "Do you want to set Kubernetes image pre tag? (Default: ${BBLUE}'eu.gcr.io/olm-rd/efm/'${NC}) - ${BPURPLE}(y/N)${NC}: " input
+    read -r -p "Do you want to Change Kubernetes image pre tag? (Default: ${BBLUE}'eu.gcr.io/olm-rd/efm/'${NC}) - ${BPURPLE}(y/N)${NC}: " input
     if [ "$input" = "y" ]; then
       kubeScripPreTagUpdate
     else

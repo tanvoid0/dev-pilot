@@ -47,8 +47,8 @@ optionOutput() {
     beautifyOptionPrint "l1" "Liquibase test:" "mvn -PLIQUIBASE_PREPARE_FOR_DIFF test"
     beautifyOptionPrint "l2" "Liquibase update:" "mvn liquibase:update liquibase:diff"
     beautifyOptionPrint "l3" "Liquibase process:" "liquibase-changelog-master.yml"
-    beautifyOptionPrint "l4" "Liquibase verify:" "mvn -PLIQUIBASE_VERIFY test"
-    beautifyOptionPrint "l5" "Create Local DB:" "$PROJECT_NAME" true
+    beautifyOptionPrint "l4" "Liquibase verify:" "mvn -PLIQUIBASE_VERIFY test" true
+#    beautifyOptionPrint "l5" "Create Local DB:" "$PROJECT_NAME" true
 
   elif [ "$PROJECT_TYPE" == "npm" ]; then
     beautifyOptionGroupTitlePrint "NPM Commands"
@@ -87,23 +87,24 @@ optionOutput() {
   ############## Git ############################
   beautifyOptionGroupTitlePrint "Git Commands"
   beautifyOptionPrint "g1" "Git Fetch:" "git fetch"
-  beautifyOptionPrint "g2" "Git Add All:" "git add ."
-  beautifyOptionPrint "g3" "Git Add src folder:" "git add src/"
-  beautifyOptionPrint "g4" "Git status:" "git status"
-  beautifyOptionPrint "g5" "Git commit:" "git commit -m \$feature: \$message"
-  beautifyOptionPrint "g6" "Git commit amend:" "git commit --amend --no-edit"
-  beautifyOptionPrint "g7" "Git push:" "git push"
-  beautifyOptionPrint "g8" "Git push Force With Lease:" "git push --force-with-lease"
-  beautifyOptionPrint "g9" "Git squash n commits": "git rebase -i Head~n"
-  beautifyOptionPrint "g10" "Git Rebase:" "git rebase origin/develop" true
+  beautifyOptionPrint "g2" "Git Create branch" "git checkout -b"
+  beautifyOptionPrint "g3" "Git Checkout branch" "git checkout"
+  beautifyOptionPrint "g4" "Git Add All:" "git add ."
+  beautifyOptionPrint "g5" "Git Add src folder:" "git add src/"
+  beautifyOptionPrint "g6" "Git status:" "git status"
+  beautifyOptionPrint "g7" "Git commit:" "git commit -m \$feature: \$message"
+  beautifyOptionPrint "g8" "Git commit with custom message"
+  beautifyOptionPrint "g9" "Git commit amend (add changes to last commit):" "git commit --amend --no-edit"
+  beautifyOptionPrint "g10" "Git push:" "git push"
+  beautifyOptionPrint "g11" "Git push Force With Lease:" "git push --force-with-lease"
+  beautifyOptionPrint "g12" "Git squash commits into 1"
+  beautifyOptionPrint "g13" "Git Update & Rebase with develop:" "git fetch; git rebase origin/develop" true
 
   ############## Utility scripts ####################
   beautifyOptionGroupTitlePrint "Utilities"
   beautifyOptionPrint "u1" "Conversion" "Base64"
   beautifyOptionPrint "u2" "ping" "Utility"
   beautifyOptionPrint "c" "Custom command" "Run any command inside project path" true
-  ############## Autopilot ######################
-  beautifyOptionPrint "0" "Autopilot" "Mode" true
 
   ############ Settings Commands ################
   beautifyOptionGroupTitlePrint "Configs"
@@ -114,7 +115,13 @@ optionOutput() {
   beautifyOptionPrint "s3" "Update" "Kubernetes Namespace." false "${NAMESPACE}"
   beautifyOptionPrint "s4" "Update" "Banner" false "${BANNER_PATH}"
   beautifyOptionPrint "s5" "Update" "Docker Pre Tag" false "${DOCKER_PRE_TAG}"
-  beautifyOptionPrint "sr" "Update" "RabbitMQ Path" true "${RABBITMQ_PATH}"
+  beautifyOptionPrint "sr" "Update" "RabbitMQ Path" false "${RABBITMQ_PATH}"
+  beautifyOptionPrint "rc" "Reset" "Cache" true
+
+  ############## Upcoming & Testing Features ######################
+  beautifyOptionGroupTitlePrint "Upcoming & Testing Features"
+  beautifyOptionPrint "0" "Autopilot Mode" "Beta"
+  beautifyOptionPrint "sp" "Switch Between Projects" "Upcoming" true
 
   ########### End of commands ###################
   echo "Press ${BRED}Ctrl+C${NC} to quit..."
@@ -160,7 +167,7 @@ pilotNavigation() {
   'l2') liquibaseScriptUpdate ;;
   'l3') liquibaseScriptProcess ;;
   'l4') liquibaseScriptVerify ;;
-  'l5') liquibaseScriptRecreateLocalDB "$NAMESPACE" "$PROJECT_NAME";;
+#  'l5') liquibaseScriptRecreateLocalDB "$NAMESPACE" "$PROJECT_NAME";;
 
     ######## Docker Commands ###############
   'd1') dockerScriptBuild "${NAMESPACE}" "${PROJECT_NAME}" ;;
@@ -184,15 +191,18 @@ pilotNavigation() {
 
     ############### Git Commands #############
   'g1') gitScriptFetch ;;
-  'g2') gitScriptAddAll ;;
-  'g3') gitScriptAddSrc ;;
-  'g4') gitScriptStatus ;;
-  'g5') gitScriptCommit ;;
-  'g6') gitScriptCommitAmend ;;
-  'g7') gitScriptPush ;;
-  'g8') gitScriptPushForceWithLease ;;
-  'g9') gitScriptSquash ;;
-  'g10') gitScriptRebase ;;
+  'g2') gitScriptCheckoutBranch create ;;
+  'g3') gitScriptCheckoutBranch  ;;
+  'g4') gitScriptAddAll ;;
+  'g5') gitScriptAddSrc ;;
+  'g6') gitScriptStatus ;;
+  'g7') gitScriptCommit ;;
+  'g8') gitScriptCommitWithMessage ;;
+  'g9') gitScriptCommitAmend ;;
+  'g10') gitScriptPush ;;
+  'g11') gitScriptPushForceWithLease ;;
+  'g12') gitScriptSquashAllCommits ;;
+  'g13') gitScriptRebase develop ;;
 
     ################### Utility Commands ##############
   'u1') utilBase64Conversion ;;
@@ -208,6 +218,7 @@ pilotNavigation() {
   's4') beautifyBannerUpdate ;;
   's5') kubeScripPreTagUpdate ;;
   'sr') kubeScriptSetRabbitmq ;;
+  'rc') utilResetCache ;;
 
     ####### Invalid option #############
   *) echo "Invalid command... Try again" ;;

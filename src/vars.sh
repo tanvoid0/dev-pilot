@@ -11,6 +11,7 @@ PROJECT_TYPE=""                                           # Type of Project
 NAMESPACE=""                                              # Namespace
 PROJECT_PATH=""                                           # Project Path
 LOGO_VIEW=""                                              # Logo View Flag (boolean)
+LOADER_TIMEOUT=5
 
 ## Autopilot vars
 PILOT_LIQUIBASE_REQUIRED=""                               # defaults to false
